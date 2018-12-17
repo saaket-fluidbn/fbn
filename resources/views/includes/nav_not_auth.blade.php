@@ -28,10 +28,10 @@
                 
                        {{-- Authentication Links --}}
              <div class="container">      
-          <div class="row">
-              <div class="col-sm-5">
+         
+         
               <button  class="btn btn-login" style="margin-top:5px;" data-toggle="modal" data-target="#login">Login</button>
-            </div>
+        
              
                
             
@@ -87,10 +87,10 @@
                                </div>     
                              </div>
                             </div>     
-                                   <div class="col-sm-5">
+                                   
                                   <button class=" btn btn-login" style="margin-top:5px;" onclick="location.href='{{ route('register') }}'">Signup</button>
-                                 </div>
-                                 </div>
+                                
+                              
                                  </div>
                                  </ul>
                               </div>      
