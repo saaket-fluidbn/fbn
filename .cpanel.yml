@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/fluidbnc/fluidbn/
+    - /bin/cp * $DEPLOYPATH
+    
