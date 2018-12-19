@@ -45,7 +45,11 @@
 
 <div class="container">
 <div style="margin-bottom:50px;">
- <h1 class="featurette-heading-title">Made with <i class="fa fa-heart" style="font-size:45px;color:red;"></i> for you</h1>
+  @if($heading!='')
+ <h1 class="featurette-heading-title" style="font-size:40px;">{{$heading}} <i class="fa fa-heart" style="font-size:40px;color:red;"></i></h1>
+@else
+<h1 class="featurette-heading-title">Curated with <i class="fa fa-heart" style="font-size:40px;color:red;"></i> for you</h1>
+ @endif
 </div>
 
             {{-- Button to write --}}

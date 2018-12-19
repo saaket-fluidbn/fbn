@@ -48,7 +48,12 @@ class FeedController extends Controller
           
            $id[] = $g->id;
        }
-        
+       if(!($user->remember_token)){
+        $heading = "Enjoy feed curated for you ".ucfirst($user->fname) ." with ";
+    }
+       else{
+           $heading = '';
+       } 
         $theory = Theory::latest()->where('user_id','!=',$user->id)->paginate(12);
         $article = Article::latest()->where('finished',1)->where('user_id','!=',$user->id)->whereNotIn('genre_id',$id)->where('views','>=',5)->paginate(12);
         $tailored = Article::latest()->where('finished',1)->where('user_id','!=',$user->id)->whereIn('genre_id',$id)->where('views','>=',5)->paginate(12);
@@ -74,7 +79,8 @@ class FeedController extends Controller
          'slug'=>$slug,
          'latest_studio_story'=>$latest_studio_story,
          'latest_story'=> $latest_story,
-         'latest_theory'=>$latest_theory
+         'latest_theory'=>$latest_theory,
+         'heading'=>$heading,
               
           
        ];
