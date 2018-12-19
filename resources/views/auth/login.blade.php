@@ -65,8 +65,14 @@ Login | fluidbN
                                 <a class="btn btn-link" style="color:mediumvioletred;" href="{{ route('forgot') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
-                            </div>
-                        </div>
+                                
+    
+                                        <a class="btn btn-link" style="color:mediumvioletred;" href="{{ route('register') }}">
+                                            {{ __('Signup Now') }}
+                                        </a>
+
+                            
+                        </>
                     </form>
                 </div>
             </div>

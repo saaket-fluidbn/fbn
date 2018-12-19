@@ -11,11 +11,14 @@ Signup - choose-category | fluidbN
 @section('content')
  
 <div class="container">
-<div class="box lower-margin" style="text-align:center;color:mediumvioletred;">
-   <h1 class="">{{'Hi '.ucfirst(Auth::user()->fname)}} </h1>
-    <img class="featurette-image img-fluid mx-auto img-card" src="/storage/general/category.png" alt="choose category">
-   </div>
- 
+<div class="box lower-margin" style="">
+   <h1 class="featurette-heading-title" style="font-size:35px;">Hi {{ucfirst(Auth::user()->fname)}}, choose categories you <i class="fa fa-heart" style="font-size:40px;color:red;"></i></h1> 
+   {{--
+   <img class="featurette-image img-fluid mx-auto" style="box-shadow:5px 5px 5px #888888;"src="/storage/general/category.png" alt="choose category">
+  --}} 
+  </div>
+</div>
+<div class="container">
   <div class="row">
    
 @foreach ($genre as $g)
@@ -37,8 +40,8 @@ else{
     <div class="col-md-3"  data-genreId="{{$g->id}}">
         <a href="/{{$g->name}}" class="chooseGenre" data-genreId="{{$g->id}}" data-name="{{$g->id}}">
 
-          <div class="{{$c}}"  style="width:70%;" id="{{$g->id}}" data-val="{{$v}}">
-          <img class="featurette-image img-fluid mx-auto img-card" src="/storage/genere/{{$g->image}}" alt="">
+          <div class="{{$c}}" id="{{$g->id}}" data-val="{{$v}}">
+          <img class="featurette-image img-fluid mx-auto " style="box-shadow:5px 5px 5px #888888;" src="/storage/genere/{{$g->image}}" alt="">
       
         </div>
      
@@ -49,9 +52,9 @@ else{
   </div>
 <div>
    @if($slug!=NULL)
-  <button class="btn btn-outline-success btn-login" onclick="location.href='{{route('user-categories',['user'=>Auth::user(),'slug'=>str_slug(Auth::user()->fname.".".Auth::user()->lname)])}}'">Save</button>
+  <button class="btn   btn-login" onclick="location.href='{{route('user-categories',['user'=>Auth::user(),'slug'=>str_slug(Auth::user()->fname.".".Auth::user()->lname)])}}'">Save</button>
   @else
-  <button class="btn btn-outline-success btn-login"onclick="location.href='{{route('create-profile')}}'" id="">Save and continue</button>
+  <button class="btn   btn-login"onclick="location.href='{{route('create-profile')}}'" id="">Save and continue</button>
 @endif
 </div>
 </div>
