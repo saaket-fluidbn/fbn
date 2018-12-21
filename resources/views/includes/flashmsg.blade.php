@@ -24,3 +24,8 @@
 </div>
 </div>
 @endif
+     <div id="msg">
+    <div  id ="msg-info">
+    
+    </div>
+     </div>

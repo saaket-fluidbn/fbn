@@ -207,7 +207,8 @@ $(document).ready(function(){
            },function(data){
              
             alert(data.message);
-          
+           // $('#msg-info').addClass('alert alert-success');
+            //$('#msg').text(data.message);
           
            }
          );
@@ -331,3 +332,26 @@ $(document).ready(function(){
             });
      });
  });
+
+ // search
+ 
+$(document).ready(function(){
+	$("#search").on("keyup",function(){
+		var query = $(this).val();
+		$.get(urlSearchSug,{
+			query:query,
+			_token: token
+		},
+		function(data){
+		if(data.output2||data.output1){
+			$("#ur").html(data.output2);
+			$("#sy").html(data.output1);
+		}	
+		else{
+			$("#ur").html(data.nores);
+			$("#sy").html(data.nores);
+		}
+		}
+		);
+	});
+});
