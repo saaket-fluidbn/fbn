@@ -1,14 +1,18 @@
 @extends('layouts.main')
 @section('title')
-People you follow | fluidbN
+People {{ucfirst($user->fname)}} follows | fluidbN
 @endsection
 
 @section('content')
 
 <div class="container">
     <div style="margin-bottom:50px;">
-    <h1 class="featurette-heading" style="font-weight:bold; font-size:30px;color:black;">People you</h1>
-   </div>
+        @if($authuser->id==$user->id)
+    <h1 class="featurette-heading" style="font-weight:bold; font-size:30px;color:black;">People you follow</h1>
+@else
+<h1 class="featurette-heading" style="font-weight:bold; font-size:30px;color:black;">People {{ucfirst($user->fname)}} follows</h1>
+@endif
+</div>
    
    
  

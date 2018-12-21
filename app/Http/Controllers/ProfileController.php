@@ -200,12 +200,13 @@ class ProfileController extends Controller
     else
      return redirect()->back()->with('error',"User with this email doesn't exist");
     }
-    public function seeFollowing(){
-        $user = Auth::user();
+    public function seeFollowing(User $user,$slug){
+        $authuser = Auth::user();
         $follows = $user->follows()->wherePivot('follower_id',$user->id)->wherePivot('following_id','!=',$user->id)->paginate(10);
         $data = [
             'follows'=>$follows,
-            'user'=>$user
+            'user'=>$user,
+            'authuser'=>$authuser,
         ];
         return view('User.user_follow_people')->with($data);
     }

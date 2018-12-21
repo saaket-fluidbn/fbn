@@ -37,15 +37,18 @@
                 
                  
                   <div class="middle box">
+                    @if(Auth::user())
                    @if(Auth::user()->id==$user->id)
         <button class="btn btn-login" onclick="location.href='{{route('settings')}}'">Update pic</button>
+                  @endif
                   @endif
                   </div>
                   
                   </div>
                   </div>
-                  <div class="col-md-5">
-                  <div class="container">
+                  
+                  <div class="container" >
+                     
                     <h5 class="homewriter" style="color:black;">{{ucfirst($user->fname)}}
                       {{ucfirst($user->lname)}}
                   </h5>
@@ -54,14 +57,37 @@
         <p class="writer"> @if($user->hasProfile->education != null && $user->hasProfile->yos != null && $user->hasProfile->college != null){{$user->hasProfile->education." ".$user->hasProfile->yos.' student @ '. $user->hasProfile->college}}@endif</p>
          <p class="writer"> @if($user->hasProfile->startup != null){{'Student startup : '.ucfirst($user->hasProfile->startup)}}@endif</p>
          <p class="writer"> @if($user->hasProfile->designation != null){{$user->hasProfile->designation .' @ '. $user->hasProfile->company}}@endif</p>
-         
-          @if($followers!=0)<button  class="btn btn-login" style="margin-top:7px;padding-top:6px;padding-bottom:6px;" data-toggle="modal" data-target="#follow"><small class="pro_info" id="followers">{{$followers.' '.$f.'  '}} </small></button>
-                                 @endif <br/>
-          <button class="btn btn-login" onclick="location.href='{{route('follows')}}'">People you follow</button>
-               
+        
+       
+    
+         @if(Auth::user()->id!=$user->id)<button class="btn btn-login fol" id="" data-userid="{{$user->id}}"
+                        
+            style="margin-top:5px;"><small class="pro_info">{{$follow?"Following":"Follow"}}</small></button> 
+            
+               <button class="btn  btn-login " onclick="location.href='{{route('user-categories',['user'=>$user,'slug'=>str_slug($user->fname.".".$user->lname)])}}'"  style="margin-top:5px;">
+                  <small class="pro_info">{{ucfirst($user->fname)."' story choices"}}</small></button>
+
+@endif
+                
+
               
-                                </div>  
-                </div>
+         
+                    @if($followers!=0)<button  class="btn btn-login" style="margin-top:5px;" data-toggle="modal" data-target="#follow"><small class="pro_info" id="followers">{{$followers.' '.$f.'  '}} </small></button>
+                @endif
+                @if(Auth::user())
+                @if(Auth::user()->id==$user->id)
+                
+                    <button class="btn btn-login" onclick="location.href='{{route('follows',['user'=>$user,'slug'=>str_slug($user->fname." ".$user->lname)])}}'" style="margin-top:5px;"><small class="pro_info">People you follow</small></button>
+                
+            @else
+            <button class="btn btn-login" onclick="location.href='{{route('follows',['user'=>$user,'slug'=>str_slug($user->fname." ".$user->lname)])}}'" style="margin-top:5px;"><small class="pro_info">People {{ucfirst($user->fname)}} follows</small></button>
+             
+                  
+                
+                @endif
+                @endif
+          
+                  </div>
                  <!-- The Modal -->
            <div class="modal fade" id="follow">
              <div class="modal-dialog modal-md">
@@ -132,14 +158,7 @@
               <div class="container">
               <div class="row">
                   
-                        @if(Auth::user()->id!=$user->id)<button class="btn btn-login box fol" id="" data-userid="{{$user->id}}"
-                        
-                        style="margin-left:5px;">{{$follow?"Following":"Follow"}}</button> 
-                        
-                           <button class="btn  btn-login box " onclick="location.href='{{route('user-categories',['user'=>$user,'slug'=>str_slug($user->fname.".".$user->lname)])}}'"  style="margin-left:5px;">
-{{ucfirst($user->fname)."' story choices"}}</button>
-
-@endif
+                     
 
                      
                   </div>

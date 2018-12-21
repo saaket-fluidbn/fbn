@@ -133,7 +133,7 @@ Route::get('follow-people','FeedController@followPeople')->name('follow-people')
 Route::get('all-story-choices','FeedController@all_choices')->name('all-story-choices');
 
 // to see following people 
-Route::get('follows','ProfileController@seeFollowing')->name('follows');
+Route::get('follows/{user}/{slug}','ProfileController@seeFollowing')->name('follows');
 });
 
 
