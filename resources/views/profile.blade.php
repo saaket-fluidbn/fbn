@@ -57,9 +57,10 @@
          
           @if($followers!=0)<button  class="btn btn-login" style="margin-top:7px;padding-top:6px;padding-bottom:6px;" data-toggle="modal" data-target="#follow"><small class="pro_info" id="followers">{{$followers.' '.$f.'  '}} </small></button>
                                  @endif <br/>
-       
+          <button class="btn btn-login" onclick="location.href='{{route('follows')}}'">People you follow</button>
                
-                </div>  
+              
+                                </div>  
                 </div>
                  <!-- The Modal -->
            <div class="modal fade" id="follow">

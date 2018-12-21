@@ -131,6 +131,9 @@ Route::get('curated-story','FeedController@followingStory')->name('curated-story
 Route::get('follow-people','FeedController@followPeople')->name('follow-people');
 // see all story choices
 Route::get('all-story-choices','FeedController@all_choices')->name('all-story-choices');
+
+// to see following people 
+Route::get('follows','ProfileController@seeFollowing')->name('follows');
 });
 
 
