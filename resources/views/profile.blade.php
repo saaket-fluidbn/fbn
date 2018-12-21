@@ -62,25 +62,25 @@
     
          @if(Auth::user()->id!=$user->id)<button class="btn btn-login fol" id="" data-userid="{{$user->id}}"
                         
-            style="margin-top:5px;"><small class="pro_info">{{$follow?"Following":"Follow"}}</small></button> 
+            style="margin-top:5px;">{{$follow?"Following":"Follow"}}</button> 
             
                <button class="btn  btn-login " onclick="location.href='{{route('user-categories',['user'=>$user,'slug'=>str_slug($user->fname.".".$user->lname)])}}'"  style="margin-top:5px;">
-                  <small class="pro_info">{{ucfirst($user->fname)."' story choices"}}</small></button>
+                  {{ucfirst($user->fname)."' story choices"}}</button>
 
 @endif
                 
 
               
          
-                    @if($followers!=0)<button  class="btn btn-login" style="margin-top:5px;" data-toggle="modal" data-target="#follow"><small class="pro_info" id="followers">{{$followers.' '.$f.'  '}} </small></button>
+                    @if($followers!=0)<button  class="btn btn-login" style="margin-top:5px;" data-toggle="modal" data-target="#follow" id="followers">{{$followers.' '.$f.'  '}}</button>
                 @endif
                 @if(Auth::user())
                 @if(Auth::user()->id==$user->id)
                 
-                    <button class="btn btn-login" onclick="location.href='{{route('follows',['user'=>$user,'slug'=>str_slug($user->fname." ".$user->lname)])}}'" style="margin-top:5px;"><small class="pro_info">People you follow</small></button>
+                    <button class="btn btn-login" onclick="location.href='{{route('follows',['user'=>$user,'slug'=>str_slug($user->fname." ".$user->lname)])}}'" style="margin-top:5px;">People you follow</button>
                 
             @else
-            <button class="btn btn-login" onclick="location.href='{{route('follows',['user'=>$user,'slug'=>str_slug($user->fname." ".$user->lname)])}}'" style="margin-top:5px;"><small class="pro_info">People {{ucfirst($user->fname)}} follows</small></button>
+            <button class="btn btn-login" onclick="location.href='{{route('follows',['user'=>$user,'slug'=>str_slug($user->fname." ".$user->lname)])}}'" style="margin-top:5px;">People {{ucfirst($user->fname)}} follows</button>
              
                   
                 
