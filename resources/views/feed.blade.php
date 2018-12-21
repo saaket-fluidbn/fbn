@@ -44,6 +44,7 @@
 {{--story categories --}}
 
 <div class="container">
+
 <div style="margin-bottom:50px;">
   @if($heading!='')
  <h1 class="featurette-heading-title" style="font-size:40px;">{{$heading}} <i class="fa fa-heart" style="font-size:40px;color:red;"></i></h1>
