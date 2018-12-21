@@ -29,32 +29,32 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
-$('button.like').on('click',function(event){
+$('#like').on('click',function(event){
   var articleId = 0;   
   var userId = 0;   
   //articleId =  $(this).parents('div.box').attr('data-articleid');
                  articleId = $(this).attr('data-articleid');
-                 userId = $('#fol').attr('data-userid');
-        if($('button.like').text()=="Wow !"){
+                 userId = $('button.fol').attr('data-userid');
+        if($('#like').text()=="Wow"){
             $.post(urlLike,{
                 articleId:articleId,
                 userId:userId,
                 _token :token
             },
             function(data){
-               $('button.like').text('Thanks for appreciating !');
+               $('#like').text('Thanks');
                $('#wow').text(data.wows);
                             }
                  ); 
           }
-      else  if($('button.like').text()=="Thanks for appreciating !"){
+      else  if($('#like').text()=="Thanks"){
         $.post(urlUnlike,{
             articleId:articleId,
             userId:userId,
             _token :token
         },
         function(data){
-                $('button.like').text('Wow !');
+                $('#like').text('Wow');
                 $('#wow').text(data.wows);
                     }
                 );    
@@ -63,26 +63,26 @@ $('button.like').on('click',function(event){
        });
 
 $(document).ready(function(){
-       $('#fol').on('click',function(){
+       $('button.fol').on('click',function(){
        var userId = 0;
        userId = $(this).attr('data-userid');
-       if($('#fol').text()=="Follow"){
+       if($('button.fol').text()=="Follow"){
         $.post(urlFollow,{
             userId:userId,
             _token :token
            },
            function(){
-               $('#fol').text('Following');
+               $('button.fol').text('Following');
            }
          );
        }
-       else if($('#fol').text()=="Following"){
+       else if($('button.fol').text()=="Following"){
         $.post(urlUnfollow,{
             userId:userId,
             _token :token
            },
            function(){
-               $('#fol').text('Follow');
+               $('button.fol').text('Follow');
            }
          );
 
@@ -106,12 +106,12 @@ $(document).ready(function(){
                     _token :token
                 },
                 function(){
-                        $('button.bookmark').text('You bookmarked it !');
+                        $('button.bookmark').text('Bookmarked');
                         
                             }
              ); 
             }
-          else  if($('button.bookmark').text()=="You bookmarked it !"){
+          else  if($('button.bookmark').text()=="Bookmarked"){
             $.post(urlUnmark,{
                 articleId:articleId,
                 _token :token
@@ -140,13 +140,13 @@ $(document).ready(function(){
                 _token :token
             },
             function(){
-                    $('#'+id).text('Bookmarked !');
+                    $('#'+id).text('Bookmarked');
                     
                         }
          );  
                 }
          
-         else if($('#'+id).text()=="Bookmarked !")     {
+         else if($('#'+id).text()=="Bookmarked")     {
             $.post(urlUnmark,{
                 articleId:articleId,
                 _token :token
@@ -189,13 +189,13 @@ $(document).ready(function(){
         
  $(document).ready(function(){
 
-  $('#save').on('click',function(){
- 
-    $('#unfinished').addClass('col-lg-4');  // add col on saving article
-       $('#btn_unfinished').show();
-    var title = $('div.form-group').eq(0).children('.form-control').val();
+  $('#save').on('click',function(event){
+      event.preventDefault();
+   
+    //var title = $('div.form-group').eq(0).children('.form-control').val();
        // var content =$('div.form-group').eq(2).children('#content').val();
-       var content = CKEDITOR.instances['content'].getData();
+       var title = $('#title').val();
+       var content = CKEDITOR.instances['editor'].getData();
         var genre = $('#genre').val();
     
            $.post(urlSave,{
@@ -207,9 +207,7 @@ $(document).ready(function(){
            },function(data){
              
             alert(data.message);
-            $('h2.title_unfinished').text(data.article_title);
-            $('small.date_unfinished').text(data.article_date);
-            $('#btn_unfinished').attr('data-articleId',data.article_id);
+          
           
            }
          );

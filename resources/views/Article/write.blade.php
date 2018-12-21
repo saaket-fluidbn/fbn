@@ -21,7 +21,7 @@ Write article | fluidbN
 
         <div class="form-group">
                
-                 {{Form::text('title','',['class'=>'form-control','placeholder'=>'Title of your story here...','id'=>'title'])}}
+                 {{Form::text('title','',['id'=>'title','class'=>'form-control','placeholder'=>'Title of your story here...','id'=>'title'])}}
                
                 </div>
 <div class="form-group">
@@ -53,10 +53,10 @@ Write article | fluidbN
 
         {{Form::hidden('content','',['id'=>'content','class'=>'form-control','role'=>'uploadcare-uploader','data-public-key'=>'fa64a2e817928b847741','data-images-only','data-crop'])}}
       
-        </div>
+        </div>--}}
         
          
-           <button class="btn   btn-login" id="save">Save and continue later !</button> --}} 
+           <button class="btn   btn-login" id="save">Save</button> 
            
            {{Form::submit('Post',['class'=>'btn   btn-login'])}}
            
