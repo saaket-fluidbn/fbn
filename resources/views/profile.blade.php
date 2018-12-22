@@ -47,7 +47,7 @@
           </div>
         </div>
            <hr>
-           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{$user->hasProfile->about }}</p>
+           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>{{$user->hasProfile->about }}</p>
            <p class="writer"> @if($user->hasProfile->education != null && $user->hasProfile->yos != null && $user->hasProfile->college != null){{$user->hasProfile->education." ".$user->hasProfile->yos.' student @ '. $user->hasProfile->college}}@endif</p>
            <p class="writer"> @if($user->hasProfile->startup != null){{'Student startup : '.ucfirst($user->hasProfile->startup)}}@endif</p>
            <p class="writer"> @if($user->hasProfile->designation != null){{$user->hasProfile->designation .' @ '. $user->hasProfile->company}}@endif</p>
@@ -230,8 +230,8 @@
          
               <div class="w3-container w3-padding">
                 
-                <button type="button" class="btn btn-login" style="margin-top:5px;"onclick="location.href='{{route('write')}}'"><i class="fa fa-pencil"></i> Write a story</button> 
-                <button type="button" class="btn btn-login" style="margin-top:5px;" onclick="location.href='{{route('write-theory')}}'"><i class="fa fa-pencil"></i> Share a theory</button> 
+                <button type="button" class="btn-feed btn-login" style="margin-top:5px;"onclick="location.href='{{route('write')}}'"><i class="fa fa-pencil"></i> Write a story</button> 
+                <button type="button" class="btn-feed btn-login" style="margin-top:5px;" onclick="location.href='{{route('write-theory')}}'"><i class="fa fa-pencil"></i> Share a theory</button> 
               </div>
             
           </div>
@@ -347,7 +347,7 @@
          
           @if(count($liked_articles)>0)
           <div class="lower-margin" style="text-align:center;">
-              <h1 class="featurette-heading-title">@if(Auth::user()->id==$user->id) {{"Stories you liked"}}
+              <h1 class="featurette-heading-title">@if(Auth::user()->id==$user->id) {{"Stories you liked "}}<i class="fa fa-heart" style="font-size:35px;color:red;"></i>
                 @else 
                {{"Stories liked by ".ucfirst($user->fname)}}@endif</h1>
                </div>
