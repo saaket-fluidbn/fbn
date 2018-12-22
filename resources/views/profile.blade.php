@@ -349,7 +349,7 @@
           <div class="lower-margin" style="text-align:center;">
               <h1 class="featurette-heading-title">@if(Auth::user()->id==$user->id) {{"Stories you liked "}}<i class="fa fa-heart" style="font-size:35px;color:red;"></i>
                 @else 
-               {{"Stories liked by ".ucfirst($user->fname) }}<i class="fa fa-heart" style="font-size:35px;color:red;"></i>
+               {{"Stories liked by ".ucfirst($user->fname) }}
                @endif</h1>
                </div>
           
