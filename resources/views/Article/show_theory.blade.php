@@ -119,12 +119,13 @@
    
 
        <footer>
+         {{--
           <div class="box lower-margin">
               <button class="btn  btn-login " id="like"  style="margin-left:20px;margin-top:5px;" data-articleid="{{$theory->id}}" type="submit">Wow</button>
           <button class="btn   btn-login bookmark" style="margin-top:5px;" data-articleId="{{$theory->id}}">Bookmark</button>
           
         </div>
-  
+  --}}
          {{--
          
             @if(Auth::user()->id != $theory->writtenBy->id)
