@@ -166,35 +166,12 @@
                             </div>     
 
            {{--follow modal close--}}
-            <div id="Demo3" class="w3-hide w3-container">
-           <div class="w3-row-padding">
-           <br>
-             <div class="w3-half">
-               <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-           </div>
-            </div>
           </div>      
         </div>
         <br>
         
         {{-- Story choices --}}
-        <div class="w3-card w3-round w3-white w3-hide-small">
+        <div class="w3-card w3-round w3-white">
           <div class="w3-container">
             <p style="font-size:20px;color:black;font-weight:bold;">Story choices</p>
             <p>
