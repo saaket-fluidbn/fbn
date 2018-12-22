@@ -61,13 +61,15 @@ class ProfileController extends Controller
         $followers = $user->followedBy()->wherePivot('following_id',$user->id)->count();
         $follows = $user->followedBy()->wherePivot('following_id',$user->id)->wherePivot('follower_id','!=',$user->id)->limit(21)->get(); 
          $liked_articles = $user->likes()->latest()->paginate(10);
+         $userGenre = $user->hasGenre;
         $data = [
           'article'=>$article,
           'theory'=>$theory,
           'user'=>$user,
           'follows'=>$follows,
           'followers'=>$followers,
-          'liked_articles'=>$liked_articles
+          'liked_articles'=>$liked_articles,
+          'userGenre'=>$userGenre
         ];
         
      return view('profile')->with($data);

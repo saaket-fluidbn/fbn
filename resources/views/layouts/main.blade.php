@@ -22,15 +22,16 @@
     <meta name="author" content="">
             <!-- CSRF Token -->
             <meta name="csrf-token" content="{{ csrf_token() }}">
-                      
+            <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>    
               <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
              <!-- Styles -->
             <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+           
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
            
-             
+           
           
              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css" integrity="sha256-e47xOkXs1JXFbjjpoRr1/LhVcqSzRmGmPqsrUQeVs+g=" crossorigin="anonymous" />
 
@@ -40,7 +41,9 @@
                   <!-- Custom styles -->
                    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
                    <link href="{{asset('css/carousel.css')}}" rel="stylesheet">
-                  
+                   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+            
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>      
   <script  src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js" integrity="sha256-0/MF5x1AoU8a7eF3Y3gaBhdfZh6JMbOkrJ1xna3cAek=" crossorigin="anonymous"></script>
      
@@ -51,7 +54,7 @@
          <script charset="utf-8" src="https://ucarecdn.com/libs/widget/3.6.1/uploadcare.full.min.js"></script>
          --}}
       <style>      
-                                  
+        html, body, h1, h2, h3, h4, h5 {font-family: "Raleway", sans-serif}                         
   /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;
