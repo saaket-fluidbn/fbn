@@ -318,10 +318,10 @@
                          
                         <div class="w3-container w3-card w3-white w3-round w3-margin">
                  
+                          
                           <h2 class="featurette-heading-feed">{{ucfirst($a->title)}}</h2>
                           <hr class="w3-clear">
-                          <img class="featurette-image img-fluid mx-auto w3-margin-bottom" style="border-radius:10px;" src="/storage/article_images/{{$a->title_image}}" alt="">
-                      
+                          
                           <p class="lead">{!!wordwrap(str_limit($a->content,100),50,"<br>\n",TRUE)!!}</p>
                         </div> 
                         </a>
