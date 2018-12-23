@@ -140,16 +140,16 @@ span.psw {
 <div class="row box lower-margin">
   <div class="col-md-12">  
 <div style="box-shadow:10px 10px 10px #888888;">
-
+        <a href="#gen">
           <img class="featurette-image img-fluid mx-auto" src="/storage/general/front.png" alt="">
-
+</a>
 
 </div>
 </div>
 </div>
 
  
-  <div class="row box">
+  <div class="row box" id="gen">
     
 @foreach ($genre as $g)
 
@@ -231,7 +231,7 @@ span.psw {
         {{--footer--}} 
          <footer class="footer container">
             
-              <p style="font-weight:bold;">&copy; @php echo date('Y');@endphp fluidbN Media &middot; All rights reserved &middot; <a href="{{route('privacy')}}">Privacy</a> &middot; <a href="{{route('terms')}}">Terms</a></p>
+              <p style="font-weight:bold;">&copy; @php echo date('Y');@endphp fluidbN Media Technologies &middot; All rights reserved &middot; <a href="{{route('privacy')}}">Privacy</a> &middot; <a href="{{route('terms')}}">Terms</a></p>
            
             </footer>
            
