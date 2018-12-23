@@ -26,9 +26,9 @@
   <!-- Page Container -->
   <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
     <!-- The Grid -->
-    <div class="w3-row">
+    <div class="row">
       <!-- Left Column -->
-      <div class="w3-col m3">
+      <div class="col-md-4">
         <!-- Profile -->
         <div class="w3-card w3-round w3-white">
           <div class="w3-container">
@@ -199,20 +199,17 @@
       </div>
       
       <!-- Middle Column -->
-      <div class="w3-col m7">
+      <div class="col-md-7">
          @if(Auth::user())
          @if(Auth::user()->id==$user->id)
-        <div class="w3-row-padding">
-          <div class="w3-col m12">
-         
+        
               <div class="w3-container w3-padding">
                 
                 <button type="button" class="btn-feed btn-login" style="margin-top:5px;"onclick="location.href='{{route('write')}}'"><i class="fa fa-pencil"></i> Write a story</button> 
                 <button type="button" class="btn-feed btn-login" style="margin-top:5px;" onclick="location.href='{{route('write-theory')}}'"><i class="fa fa-pencil"></i> Share a theory</button> 
               </div>
-            
-          </div>
-        </div>
+   
+       
         @endif
         @endif
 
@@ -340,7 +337,7 @@
                          
                         <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
                  
-                          <img class="featurette-image img-fluid   propic-small" src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt=""> <small class="writer-small"><a href="{{route('profile',['user'=>$a->writtenBy,'slug'=>str_slug($a->writtenBy->fname." ".$a->writtenBy->lname)])}}">{{ucfirst($a->writtenBy->fname).' '. ucfirst($a->writtenBy->lname)}}</a></small><div class="">{{--<small class="margin writer-small">{{$a->writtenBy->hasProfile->about }}</small>--}}</div>
+                          <img class="featurette-image img-fluid   propic-small" src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt=""> <small class="writer-small">{{ucfirst($a->writtenBy->fname).' '. ucfirst($a->writtenBy->lname)}}</small><div class="">{{--<small class="margin writer-small">{{$a->writtenBy->hasProfile->about }}</small>--}}</div>
                          <br>
                           <span class="w3-right w3-opacity" style="font-weight:bold;">{{ucfirst($a->ofGenre->name)}}</span>
                           <h2 class="featurette-heading-feed">{{ucfirst($a->title)}}</h2><br>
