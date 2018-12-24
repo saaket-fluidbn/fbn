@@ -116,8 +116,22 @@
                         <p class="lead">{!!wordwrap(str_limit($a->content,100),50,"<br>\n",TRUE)!!}</p>
                        
                          <div class="" style="margin-botton:5px;">
-                       <img class="featurette-image img-fluid mx-auto  propic-small" src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt=""> <small class="writer-small"><a href="{{route('profile',['user'=>$a->writtenBy,'slug'=>str_slug($a->writtenBy->fname." ".$a->writtenBy->lname)])}}">{{ucfirst($a->writtenBy->fname).' '. ucfirst($a->writtenBy->lname)}}</a></small>
-                     
+                            
+                       <img class="featurette-image img-fluid mx-auto  propic-small" src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt=""> 
+                       <div class="w3-dropdown-hover"><small class="writer-small">{{ucfirst($a->writtenBy->fname).' '. ucfirst($a->writtenBy->lname)}}</small>
+                          <div class="w3-dropdown-content w3-card-4" style="width:250px">
+                              <a href="{{route('profile',['user'=>$a->writtenBy,'slug'=>str_slug($a->writtenBy->fname." ".$a->writtenBy->lname)])}}">
+                            <img src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt="" style="width:100%"></a>
+                            <div class="w3-container">
+                              <p>{{$a->writtenBy->hasProfile->about}}</p>
+                              @if($a->writtenBy->hasProfile->college)
+                              <p>{{$a->writtenBy->hasProfile->education.' '.$a->writtenBy->hasProfile->yos.' student at '.$a->writtenBy->hasProfile->college}}</p>
+                              @elseif($a->writtenBy->hasProfile->company)
+                              <p>{{$a->writtenBy->hasProfile->designation.' at '.$a->writtenBy->hasProfile->company}}</p>
+                              @endif
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       </div>
                     </div>
@@ -228,8 +242,22 @@
                        @endphp
                         <p class="lead">{!!wordwrap(str_limit($a->content,100),50,"<br>\n",TRUE)!!}</p>
                         <div class="" style="margin-botton:5px;">
-                       <img class="featurette-image img-fluid mx-auto  propic-small" src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt=""> <small class="writer-small"><a href="{{route('profile',['user'=>$a->writtenBy,'slug'=>str_slug($a->writtenBy->fname." ".$a->writtenBy->lname)])}}">{{ucfirst($a->writtenBy->fname).' '. ucfirst($a->writtenBy->lname)}}</a></small><div class="">{{--<small class="margin writer-small">{{$a->writtenBy->hasProfile->about }}</small>--}}</div>
-                     {{--
+                       <img class="featurette-image img-fluid mx-auto  propic-small" src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt="">
+                       <div class="w3-dropdown-hover"><small class="writer-small">{{ucfirst($a->writtenBy->fname).' '. ucfirst($a->writtenBy->lname)}}</small>
+                        <div class="w3-dropdown-content w3-card-4" style="width:250px">
+                            <a href="{{route('profile',['user'=>$a->writtenBy,'slug'=>str_slug($a->writtenBy->fname." ".$a->writtenBy->lname)])}}">
+                          <img src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt="" style="width:100%"></a>
+                          <div class="w3-container">
+                            <p>{{$a->writtenBy->hasProfile->about}}</p>
+                            @if($a->writtenBy->hasProfile->college)
+                            <p>{{$a->writtenBy->hasProfile->education.' '.$a->writtenBy->hasProfile->yos.' student at '.$a->writtenBy->hasProfile->college}}</p>
+                            @elseif($a->writtenBy->hasProfile->company)
+                            <p>{{$a->writtenBy->hasProfile->designation.' at '.$a->writtenBy->hasProfile->company}}</p>
+                            @endif
+                          </div>
+                        </div>
+                      </div>
+                       {{--
                        <button class="   btn-login feed" id="{{$a->id}}" style="margin-top:5px;padding:8px;" data-articleId="{{$a->id}}">{{$bookmark ? "Bookmarked !" : "Bookmark"}}</button>
                        --}}
                       </div>
@@ -307,8 +335,23 @@
                        @endphp
                         <p class="lead">{!!wordwrap(str_limit($a->content,100),50,"<br>\n",TRUE)!!}</p>
                         <div class="" style="margin-botton:5px;">
-                       <img class="featurette-image img-fluid mx-auto  propic-small" src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt=""> <small class="writer-small"><a href="{{route('profile',['user'=>$a->writtenBy,'slug'=>str_slug($a->writtenBy->fname." ".$a->writtenBy->lname)])}}">{{ucfirst($a->writtenBy->fname).' '. ucfirst($a->writtenBy->lname)}}</a></small><div class="">{{--<small class="margin writer-small">{{$a->writtenBy->hasProfile->about }}</small>--}}</div>
-                     {{--
+                            <a href="{{route('profile',['user'=>$a->writtenBy,'slug'=>str_slug($a->writtenBy->fname." ".$a->writtenBy->lname)])}}">
+                          <img class="featurette-image img-fluid mx-auto  propic-small" src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt=""></a> 
+                       <div class="w3-dropdown-hover"><small class="writer-small">{{ucfirst($a->writtenBy->fname).' '. ucfirst($a->writtenBy->lname)}}</small>
+                        <div class="w3-dropdown-content w3-card-4" style="width:250px">
+                          <img src="/storage/profile_images/thumbnails/{{$a->writtenBy->hasProfile->profile_image}}" alt="" style="width:100%">
+                          <div class="w3-container">
+                            <p>{{$a->writtenBy->hasProfile->about}}</p>
+                            @if($a->writtenBy->hasProfile->college)
+                            <p>{{$a->writtenBy->hasProfile->education.' '.$a->writtenBy->hasProfile->yos.' student at '.$a->writtenBy->hasProfile->college}}</p>
+                            @elseif($a->writtenBy->hasProfile->company)
+                            <p>{{$a->writtenBy->hasProfile->designation.' at '.$a->writtenBy->hasProfile->company}}</p>
+                            @endif
+                          </div>
+                        </div>
+                      </div>
+                    
+                       {{--
                        <button class="   btn-login feed" id="{{$a->id}}" style="margin-top:5px;padding:8px;" data-articleId="{{$a->id}}">{{$bookmark ? "Bookmarked !" : "Bookmark"}}</button>
                        --}}
                       </div>

@@ -10718,7 +10718,7 @@ $(document).ready(function () {
 // search
 
 $(document).ready(function () {
-    $("#search").on("keyup", function () {
+    $(".search").on("keyup", function () {
         var query = $(this).val();
         $.get(urlSearchSug, {
             query: query,
@@ -10726,10 +10726,12 @@ $(document).ready(function () {
         }, function (data) {
             if (data.output2 || data.output1) {
                 $("#ur").html(data.output2);
-                $("#sy").html(data.output1);
+				$("#sy").html(data.output1);
+				$("#sys").html(data.output1);
             } else {
                 $("#ur").html(data.nores);
-                $("#sy").html(data.nores);
+				$("#sy").html(data.nores);
+				$("#sys").html(data.nores);
             }
         });
     });

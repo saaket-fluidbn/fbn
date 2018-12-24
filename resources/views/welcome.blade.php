@@ -86,7 +86,8 @@ a{
   <button onclick="location.href='{{route('login')}}'"  class="w3-bar-item w3-button">Login</button>
   <button onclick="location.href='{{route('register')}}'"  class="w3-bar-item w3-button">Signup</button>
 </nav>
-
+<div id="top">
+</div>
 <!-- Header with full-height image -->
 <header class="bgimg-1 w3-display-container w3-hide-small w3-hide-medium" id="home">
     
@@ -235,7 +236,7 @@ a{
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-64">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <a href="#top" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
   <p style="" class="w3-hover-opacity">&copy; @php echo date('Y');@endphp fluidbN Media Technologies &middot; All rights reserved &middot; <a href="{{route('privacy')}}">Privacy</a> &middot; <a href="{{route('terms')}}">Terms</a></p>
            
   <div class="w3-xlarge w3-section">
