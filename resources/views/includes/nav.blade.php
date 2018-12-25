@@ -1,4 +1,5 @@
 <!-- Navbar (sit on top) -->
+@auth
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card" id="myNavbar">
     <a href="{{ url('/feed') }}" class="w3-bar-item  w3-wide"><img class="featurette-image img-fluid mx-auto" src="/storage/logo/logow.png" style=""></a>
@@ -239,8 +240,10 @@
      @endauth
       </button>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="{{route('profile',['user'=>Auth::user(),'slug'=>str_slug(Auth::user()->fname.' '.Auth::user()->lname)])}}" class="w3-bar-item"  >Profile</a>
-                                       <a href="{{route('write')}}" id="write"class="w3-bar-item">Write a story</a>
+        @if(Auth::user())   
+        <a href="{{route('profile',['user'=>Auth::user(),'slug'=>str_slug(Auth::user()->fname.' '.Auth::user()->lname)])}}" class="w3-bar-item"  >Profile</a>
+        @endif                               
+        <a href="{{route('write')}}" id="write"class="w3-bar-item">Write a story</a>
                                           <a href="{{route('write-theory')}}" id="write-theory"class="w3-bar-item">Share your theory</a>
                                        <a href="{{route('show-bookmark')}}" id="show-bookmark" class="w3-bar-item"> My bookmarks</a>
                                       <a href="{{route('user-categories',['user'=>Auth::user(),'slug'=>str_slug(Auth::user()->fname.".".Auth::user()->lname)])}}" id="mycategories" class="w3-bar-item"> My story choices</a>
@@ -285,3 +288,5 @@
              </div>
         
 </nav>
+
+@endauth

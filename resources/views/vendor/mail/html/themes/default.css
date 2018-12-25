@@ -1,13 +1,13 @@
 /* Base */
 
 body, body *:not(html):not(style):not(br):not(tr):not(code) {
-    font-family: Avenir, Helvetica, sans-serif;
+    font-family: sans-serif;
     box-sizing: border-box;
 }
 
 body {
     background-color: #f5f8fa;
-    color: #74787E;
+    color:black;
     height: 100%;
     hyphens: auto;
     line-height: 1.4;
@@ -40,35 +40,38 @@ a img {
 /* Typography */
 
 h1 {
-    color: #2F3133;
-    font-size: 19px;
-    font-weight: bold;
+    color:black;
+    font-size: 20px;
+    font-family:sans-serif;
     margin-top: 0;
     text-align: left;
 }
 
 h2 {
-    color: #2F3133;
+    color: white;
     font-size: 16px;
-    font-weight: bold;
+
     margin-top: 0;
     text-align: left;
+    font-family:sans-serif;
 }
 
 h3 {
-    color: #2F3133;
+    color: white;
     font-size: 14px;
     font-weight: bold;
     margin-top: 0;
     text-align: left;
+    font-family:sans-serif;
 }
 
 p {
-    color: #74787E;
+    color: black;
     font-size: 16px;
     line-height: 1.5em;
     margin-top: 0;
     text-align: left;
+    font-family:sans-serif;
 }
 
 p.sub {
@@ -82,7 +85,7 @@ img {
 /* Layout */
 
 .wrapper {
-    background-color: #f5f8fa;
+    background-color:black;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -105,14 +108,15 @@ img {
 .header {
     padding: 25px 0;
     text-align: center;
+    background-color:black;
 }
 
 .header a {
-    color: #bbbfc3;
-    font-size: 19px;
-    font-weight: bold;
+    color:white;
+    font-size: 30px;
+    
     text-decoration: none;
-    text-shadow: 0 1px 0 white;
+    
 }
 
 /* Body */
@@ -155,8 +159,10 @@ img {
 
 .footer {
     margin: 0 auto;
+    color:white;
     padding: 0;
     text-align: center;
+    font-family:sans-serif;
     width: 570px;
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
@@ -164,9 +170,10 @@ img {
 }
 
 .footer p {
-    color: #AEAEAE;
+    color:white;
     font-size: 12px;
     text-align: center;
+    font-family:sans-serif;
 }
 
 /* Tables */
@@ -218,6 +225,13 @@ img {
     -webkit-text-size-adjust: none;
 }
 
+.button-black {
+    background-color: black;
+    border-top: 10px solid black;
+    border-right: 18px solid black;
+    border-bottom: 10px solid black;
+    border-left: 18px solid black;
+}
 .button-blue {
     background-color: #3097D1;
     border-top: 10px solid #3097D1;
@@ -249,8 +263,10 @@ img {
 }
 
 .panel-content {
-    background-color: #EDEFF2;
+    background-color:#ddd;
     padding: 16px;
+    color:black;
+    font-weight:bold;
 }
 
 .panel-item {

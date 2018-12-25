@@ -37,7 +37,13 @@
             {{ucfirst($user->lname)}}
         </h5>
         <div class="container1">
-           <p class="w3-center"><img class="featurette-image img-fluid w3-circle" style="box-shadow:5px 5px 5px #888888;height:106px;width:106px" src="/storage/profile_images/{{$user->hasProfile->profile_image}}" alt=""></p>
+           <p class="w3-center"><img class="featurette-image img-fluid w3-circle" style="box-shadow:5px 5px 5px #888888;height:106px;width:106px" src="/storage/profile_images/{{$user->hasProfile->profile_image}}" alt="" onclick="document.getElementById('modal02').style.display='block'"></p>
+           <div id="modal02" class="w3-modal" onclick="this.style.display='none'">
+            <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+            <div class="w3-modal-content w3-animate-zoom">
+              <img src="/storage/profile_images/{{$user->hasProfile->profile_image}}" style="width:100%">
+            </div>
+          </div> 
            <div class="middle box">
             @if(Auth::user())
            @if(Auth::user()->id==$user->id)
@@ -137,10 +143,12 @@
                      
                      <div class="col-sm-4">
                      <a href="{{route('profile',['user'=>$f,'slug'=>str_slug($f->fname." ".$f->lname)])}}">
-                     <img class="featurette-image img-fluid mx-auto propic-small" src="/storage/profile_images/thumbnails/{{$f->hasProfile->profile_image}}" alt="">
+                     <img class="featurette-image img-fluid mx-auto propic-small" src="/storage/profile_images/thumbnails/{{$f->hasProfile->profile_image}}" alt="" >
+                      
                      <small class="writer"> {{ucfirst($f->fname).' '.ucfirst($f->lname) }}</small>
                      </a>
                      </div>
+                    
                      @endforeach
                      
                      </div> 

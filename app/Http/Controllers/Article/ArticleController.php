@@ -167,13 +167,13 @@ class ArticleController extends Controller
                 $article->genre_id = $request->input('genre');
                 $article->finished =1;
                 $article->save();
-                $message = ucfirst($user->fname).' added a new story - '.$article->title;
+         
                 $id = base_convert($article->id,10,36);
                 $url = 'https://www.fluidbn.com/story/'.$id.'/'.str_slug($article->title);
                 
      //notify all followers for new story
                 Notification::send($allFollowers,new UserFollowedStory($user,$article));
-                 Mail::to($allFollowers)->send(new StoryAdded($user,$message,$url));
+                 Mail::to($allFollowers)->send(new StoryAdded($user,$article,$url));
                  return redirect()->route('show-article',['article'=>$article,'slug'=>str_slug($article->title)])->with('success',ucfirst($user->fname).' your story is successfully posted !');
 
             }

@@ -6,6 +6,8 @@ namespace App\Http\Controllers\AfterSignup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Notifications\UserWelcome;
+use Mail;
+use App\Mail\Welcome;
 use Auth;
 use App\Genre;
 use App\Profile;
@@ -141,7 +143,10 @@ class AfterSignupController extends Controller
             $profile->save();
                   
                    $useri = Auth::user();
-                  $useri->notify(new UserWelcome($useri));
+                 // welcome notis to user
+                   $useri->notify(new UserWelcome($useri));
+                 
+                  Mail::to($useri)->send(new Welcome($user));
        $article = Article::orderBy('id','desc')->get();
       
        $user_genre = $useri->hasGenre()->wherePivot('user_id',$useri->id)->get();

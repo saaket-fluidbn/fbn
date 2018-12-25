@@ -24,7 +24,8 @@
          
               <a href="{{route('profile',['user'=>$article->writtenBy,'slug'=>str_slug($article->writtenBy->fname." ".$article->writtenBy->lname)])}}">
               <img class="featurette-image img-fluid mx-auto  propic" src="/storage/profile_images/{{$article->writtenBy->hasProfile->profile_image}}" alt=""><h5 class="writer">{{ucfirst($article->writtenBy->fname)}}
-              {{ucfirst($article->writtenBy->lname)}}</h5></a>
+               
+                {{ucfirst($article->writtenBy->lname)}}</h5></a>
           
              
               <h6 class="writer-small" style="margin-top:5px;">{{$article->writtenBy->hasProfile->about }}</h6>
@@ -62,8 +63,15 @@
      <div class="col-sm-4">
      
               <div class="frame">    
-            <img class="featurette-image img-fluid mx-auto" src="/storage/article_images/{{$article->title_image}}"alt="">
-              </div>
+            <img class="featurette-image img-fluid mx-auto" src="/storage/article_images/{{$article->title_image}}"alt=""  onclick="document.getElementById('modal02').style.display='block'">
+            
+          </div>
+          <div id="modal02" class="w3-modal" onclick="this.style.display='none'">
+            <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+            <div class="w3-modal-content w3-animate-zoom">
+              <img src="/storage/article_images/{{$article->title_image}}" style="width:100%">
+            </div>
+          </div>    
      </div>
     </div>
 </div>

@@ -2,7 +2,7 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            {{ config('app.name') }}
+            fluidbN
         @endcomponent
     @endslot
 
@@ -21,7 +21,9 @@
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')
-            © {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
+        This is a system generated mail. Please do not reply.
+        For any queries mail us at support@fluidbn.com  <br>  
+        © {{ date('Y') }} fluidbN Media Technologies . All rights reserved.
         @endcomponent
     @endslot
 @endcomponent

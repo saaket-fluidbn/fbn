@@ -21,7 +21,9 @@
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')
-            &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
+        This is a system generated mail. Please do not reply.
+        For any queries mail us at support@fluidbn.com  <br>  
+        © {{ date('Y') }} fluidbN Media Technologies . All rights reserved.
         @endcomponent
     @endslot
 @endcomponent

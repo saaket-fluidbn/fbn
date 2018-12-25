@@ -1,12 +1,13 @@
 @component('mail::message')
-# Hi {{ucfirst($user->fname)}}
+# Hi there, people you follow are adding stories.
 
-{{$message}}
-
-@component('mail::button', ['url' => $url])
-Take a look
+@component('mail::panel')
+{{ucfirst($user->fname).' '.ucfirst($user->lname).' added a new story titled - '.ucfirst($article->title).' in category - '.ucfirst($article->ofGenre->name)}}
+@endcomponent
+@component('mail::button', ['url' =>$url])
+Read now
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+Have a great day and fantastic experience at fluidbN !<br>
+
 @endcomponent
