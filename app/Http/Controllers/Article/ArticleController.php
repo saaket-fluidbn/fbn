@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Notification;
+use Mail;
+use App\Mail\StoryAdded;
 use App\Article;
 use App\Theory;
 use App\User;
@@ -18,6 +20,7 @@ use App\Comments;
 use Image;
 use App\Studio\StudioStories;
 use ImageOptimizer;
+
 class ArticleController extends Controller
 {
 
@@ -99,7 +102,7 @@ class ArticleController extends Controller
 
             $thumbnailImage->save($Path.time().$originalImage->getClientOriginalName()); 
             
-            ImageOptimizer::optimize($full_path);
+          //  ImageOptimizer::optimize($full_path);
             $imageName = time().$originalImage->getClientOriginalName();
             
            }
@@ -164,11 +167,15 @@ class ArticleController extends Controller
                 $article->genre_id = $request->input('genre');
                 $article->finished =1;
                 $article->save();
+                $message = ucfirst($user->fname).' added a new story - '.$article->title;
+                $id = base_convert($article->id,10,36);
+                $url = 'https://www.fluidbn.com/story/'.$id.'/'.str_slug($article->title);
                 
      //notify all followers for new story
-                 Notification::send($allFollowers,new UserFollowedStory($user,$article));
-                 
+                Notification::send($allFollowers,new UserFollowedStory($user,$article));
+                 Mail::to($allFollowers)->send(new StoryAdded($user,$message,$url));
                  return redirect()->route('show-article',['article'=>$article,'slug'=>str_slug($article->title)])->with('success',ucfirst($user->fname).' your story is successfully posted !');
+
             }
         
         }
@@ -307,6 +314,14 @@ class ArticleController extends Controller
         ];
          
         return view('Article.show_article')->with($data);
+    }
+
+    // for external links
+    public function showExt($id,$slug){
+        $con = base_convert($id,36,10);
+        $article = Article::find($con);
+        return redirect()->route('show-article',['article'=>$article,'slug'=>str_slug($article->title)]);
+
     }
     
       /**

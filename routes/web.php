@@ -118,10 +118,15 @@ Route::get('/notifications','NotificationController@notifications')->name('notif
 Route::post('/markRead','NotificationController@markRead')->name('markRead');
 Route::get('/all-notifications','NotificationController@allNotifications')->name('all-notifications');
 Route::get('/profile/{user}/{slug}','ProfileController@show')->name('profile');
+// to show user from external link
+Route::get('/usp/{$id}/{slug}','ProfileController@showExt')->name('profileExt');
+
 Route::get('/user-categories/{user}/{slug}','ProfileController@userCategories')->name('user-categories');
 // To show article
 Route::get('/show-article/{article}/{slug}','Article\ArticleController@show')->name('show-article');
 
+// To show article external link
+Route::get('/story/{id}/{slug}','Article\ArticleController@showExt')->name('showExt');
 // to show theory
 Route::get('/show-theory/{theory}/{slug}','Article\ArticleController@showTheory')->name('show-theory');
 
