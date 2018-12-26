@@ -48,7 +48,20 @@ body, html {
   min-height: 100%;
 
 }
+.bgimg-5 {
+  background-position: center;
+  background-size:cover;
+  background-image: url("/storage/general/fbn_back.png");
+  min-height: 100%;
 
+}
+.bgimg-6 {
+  background-position: center;
+  background-size:cover;
+  background-image: url("/storage/general/fbn_back_mob.png");
+  min-height: 100%;
+
+}
 .w3-bar .w3-button {
   padding: 16px;
 }
@@ -157,7 +170,24 @@ a{
     
    
   </div>
- 
+  <div class="bgimg-5 w3-display-container w3-hide-small w3-hide-medium " id="" style="margin-top:0.05%;">
+    <div class=" w3-text-white" style="padding:48px;text-align:center;">
+        
+      <span class="w3-xxlarge w3-hide-small  w3-hide-medium w3-display-left coolhead" style="color:black;">A place where information is<br> structured, more interactive and <br>presented interestingly.</span><br>
+     
+    </div> 
+    
+   
+  </div>
+  <div class="bgimg-6 w3-display-container w3-hide-large " id="" style="">
+    <div class=" w3-text-white" style="padding:48px;">
+        
+      <span class="w3-large w3-hide-large w3-display-topright coolhead" style="color:black;">A place where information is<br> structured, more interactive and <br>presented interestingly.</span><br>
+     
+    </div> 
+    
+   
+  </div>
   <div id="id01" class="w3-modal">
       <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
   
