@@ -174,7 +174,10 @@ a{
     <div class=" w3-text-white" style="padding:48px;text-align:center;">
         
       <span class="w3-xxlarge w3-hide-small  w3-hide-medium w3-display-left coolhead" style="color:black;">A place where information is<br> structured, more interactive and <br>presented interestingly.</span><br>
-     
+      <div class="w3-display-middle" style="padding:24px 48px">
+        <p><button onclick="location.href='{{route('register')}}'" class="w3-button w3-black w3-padding-xlarge w3-xlarge">Get Started</button>
+      
+      </div>
     </div> 
     
    
@@ -183,7 +186,10 @@ a{
     <div class=" w3-text-white" style="padding:48px;">
         
       <span class="w3-large w3-hide-large w3-display-topright coolhead" style="color:black;">A place where information is<br> structured, more interactive and <br>presented interestingly.</span><br>
-     
+      <div class=" w3-display-middle" style="padding:24px 48px;margin-top:20%;">
+        <p><button onclick="location.href='{{route('register')}}'" class="w3-button w3-black w3-padding-large w3-large">Get Started</button>
+       
+      </div>
     </div> 
     
    
@@ -222,8 +228,10 @@ a{
   
       </div>
     </div>
-{{--  
+    
 
+    {{--  
+ 
 <div class="w3-container" style="padding:128px 16px" id="about">
   <h3 class="w3-center">ABOUT THE COMPANY</h3>
   <p class="w3-center w3-large">Key features of our company</p>

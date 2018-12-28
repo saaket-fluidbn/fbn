@@ -267,7 +267,7 @@ span.psw {
            <script  src="{{ asset('js/functions.js') }}" defer></script>
        <script async src="{{asset('js/app.js')}}" defer></script>
        <script>
-            function myFunction1() {
+            function notiFunc() {
               var x = document.getElementById("nts");
               if (x.className.indexOf("w3-show") == -1) {
                 x.className += " w3-show";
@@ -277,8 +277,8 @@ span.psw {
             }
             
           
-                    function myFunction2() {
-                      var x = document.getElementById("usp");
+                    function uspFunc() {
+                      var x = document.getElementById("uspr");
                       if (x.className.indexOf("w3-show") == -1) {
                         x.className += " w3-show";
                       } else { 

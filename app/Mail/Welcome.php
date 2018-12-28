@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Welcome extends Mailable
+class Welcome extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     public $user;
@@ -29,7 +29,7 @@ class Welcome extends Mailable
     public function build()
     {
         return $this
-        ->subject('Its great to have you aboard '.ucfirst($user->fname))
-        ->markdown('emails.Welcome',compact('user'));
+        ->subject('Its great to have you aboard '.ucfirst($this->user->fname))
+        ->markdown('emails.Welcome');
     }
 }

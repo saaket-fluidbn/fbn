@@ -78,7 +78,7 @@ public function searchSuggestion(Request $request){
              $query = $request['query'];       
 
            $nores='';
-           $output1 = '<tr><th style="font-weight:bold;font-size:22px;color:black;">fluidbN family & stories</th></tr>';
+           $output1 = '<tr><th style="font-weight:bold;font-size:22px;color:white;">fluidbN family & stories</th></tr>';
          //  $output2 = '<tr><th style="font-weight:bold;font-size:22px;color:black;">Users</th></tr>';
          //  $output3 = '<tr><th style="font-weight:bold;font-size:22px;color:black;">fluidbN studio stories</th></tr>';
          if($query!=""){

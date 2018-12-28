@@ -23,7 +23,7 @@
                   {{ucfirst($u->lname)}}
               </h5>
              
-               <img class="featurette-image img-fluid mx-auto  propic-small" src="/storage/profile_images/{{$u->hasProfile->profile_image}}" alt=""></a>
+               <img class="featurette-image img-fluid mx-auto  propic-small" src="/storage/profile_images/thumbnails/{{$u->hasProfile->profile_image}}" alt=""></a>
                
               <div class="lower-margin">
               <h6 class="margin writer">{{ucfirst($u->hasProfile->about) }}</h6>

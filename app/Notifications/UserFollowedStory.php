@@ -15,7 +15,7 @@ class UserFollowedStory extends Notification implements ShouldQueue
     use Queueable;
     protected $user;
     protected $article;
-
+  
     /**
      * Create a new notification instance.
      *
@@ -25,6 +25,7 @@ class UserFollowedStory extends Notification implements ShouldQueue
     {
         $this->user = $user;
         $this->article = $article;
+
     }
 
     /**
