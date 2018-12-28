@@ -65,7 +65,9 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-
+.hov-a-white:hover{
+color:white;
+}
 
 /* Center the image and position the close button */
 .imgcontainer {
@@ -361,7 +363,19 @@ span.psw {
             
             </script>
         
-       
+       <script>
+        /*  
+        $(document).ready(function(){
+            $("#search-p").on('click',function(){
+
+                $("#tab-p").attr('style','margin-top:40%');
+                $("#nav-p").attr('style','margin-top:20%');
+
+            });
+           
+            });
+            */
+       </script>
        <script>
         @include('includes.buttons')
        </script>

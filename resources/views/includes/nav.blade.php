@@ -9,7 +9,7 @@
     </a>
  
     <!-- Right-sided navbar links -->
-    <div class="w3-display-middle w3-hide-small w3-hide-medium">
+    <div class="w3-display-middle w3-hide-small w3-hide-medium" id="nav-p" style="">
       {{--<a href="#about" class="w3-bar-item w3-button">About</a>--}}
       <button onclick="location.href='/feed'" class="w3-bar-item ">Feed</button>
   <button onclick="location.href='{{route('curated-story')}}'"  class="w3-bar-item w3-button">Curated stories</button>
@@ -115,7 +115,7 @@
    
 {{--search--}}
 <form class="form-inline my-2 my-lg-0 mx-auto" action="{{route('search')}}">
-    <input class="form-control mr-sm-2 search" id ="search" type="search" placeholder="Search fluidbN..." aria-label="Search"name= "search" autocomplete="off"  style="">
+    <input class="form-control mr-sm-2 search" id ="search-p" type="search" placeholder="Search fluidbN..." aria-label="Search"name= "search" autocomplete="off"  style="">
     <button class="btn-login my-2 my-sm-0" type="submit" style="border:none;"><i class="fa fa-search " ></i></button>
 </form>
 
@@ -124,11 +124,11 @@
 
 
 </div>
-    
+
 
     </div>
  
-    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+    {{-- Hide right-floated links on small screens and replace them with a menu icon --}}
 {{--
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large" onclick="w3_open()">
       <i class="fa fa-bars"></i>
@@ -136,32 +136,33 @@
     --}}
   </div>
  
-</div>
 
-    <div class="w3-container w3-hide-small w3-hide-medium">
+
+  <div class="w3-container w3-hide-small w3-hide-medium" id="tab-p" style="">
          
-             <table class="table table-bordered table-hover ">
-                      
-                       <tbody id="sys" style="color:black;">
-                       
-                       </tbody>
-                        
-                       </table>
-       
-           
-         </div>
+      <table class="table table-bordered table-hover ">
+               
+                <tbody id="sys" style="color:black;">
+                
+                </tbody>
+                 
+                </table>
+  
     
-<!-- Sidebar on small screens when clicking the menu icon -->
+  </div>
+    
+{{-- Sidebar on small screens when clicking the menu icon --}}
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left  w3-hide-large" style="display:none;width:100%;" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close &times;</a>
   {{--<a href="#about" class="w3-bar-item w3-button">About</a>--}}
-  <button onclick="location.href='/feed'" class="w3-bar-item w3-button">Feed</button>
-  <button onclick="location.href='{{route('curated-story')}}'"  class="w3-bar-item w3-button">Curated stories</button>
-  <button onclick="location.href='{{route('all-story-choices')}}'"  class="w3-bar-item w3-button">All story choices</button>
+  <a href='/feed' class="w3-bar-item hov-a-white">Feed</a>
+  <a href="{{route('curated-story')}}"  class="w3-bar-item hov-a-white">Curated stories</a>
+  <a href="{{route('all-story-choices')}}"  class="w3-bar-item hov-a-white">All story choices</a>
+  
   <div class="w3-dropdown-click">
-      <button onclick="notiFunc()" class="w3-bar-item w3-button"> @auth
+      <a onclick="notiFunc()" class="w3-bar-item hov-a-white"> @auth
         <span class="fa fa-bell" id="notifications" style="color:white;font-size:25px;"></span>@if(Auth::user()->unreadNotifications->count()>0)<span class="badge badge-danger"  id="noti_count">{{Auth::user()->unreadNotifications->count()}}</span>@endif
-        @endauth</button>
+        @endauth</a>
       <div id="nts"class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
       
         @auth
@@ -226,12 +227,12 @@
     </div>
   {{--user--}}
   <div class="w3-dropdown-click">
-      <button onclick="uspFunc()" class="w3-bar-item w3-button"> 
+      <a onclick="uspFunc()" class="w3-bar-item hov-a-white"> 
     @auth 
       <img class="img-fluid mx-auto propic-small" style="width:30px;height:30px;"src="/storage/profile_images/thumbnails/{{Auth::user()->hasProfile->profile_image}}" alt="" >
       <small  style="color:white; font-size:15px;"> {{'   '.ucfirst(Auth::user()->fname)}}</small>
     @endauth
-      </button>
+      </a>
     <div id="uspr" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
         <a href="{{route('profile',['user'=>Auth::user(),'slug'=>str_slug(Auth::user()->fname.' '.Auth::user()->lname)])}}" class="w3-bar-item"  >Profile</a>
         <a href="{{route('write')}}" id="write"class="w3-bar-item">Write a story</a>
@@ -257,28 +258,29 @@
     
 {{--search--}}
 
-<form class="form-inline my-2 my-lg-0 mx-auto w3-bar-item" action="{{route('search')}}">
+<form class="form-inline my-2 my-lg-0 mx-auto" action="{{route('search')}}">
     <input class="form-control mr-sm-2 search" id ="" type="search" placeholder="Search fluidbN..." aria-label="Search"name= "search" autocomplete="off"  style="">
     <button class="btn-login my-2 my-sm-0" type="submit" style="border:none;"><i class="fa fa-search " ></i></button>
 </form>
 
 {{--end search--}}
 </div>
+
+<div class="w3-container w3-hide-large w3-hover-black">
+             
+    <table class="table table-bordered ">
+             
+              <tbody id="sy" style="color:white;" class="">
+              
+              </tbody>
+               
+              </table>
+
+  
+</div>
+
     </div>
     
-        <div class="w3-container w3-hide-large">
-             
-                 <table class="table table-bordered table-hover">
-                          
-                           <tbody id="sy" style="color:white;">
-                           
-                           </tbody>
-                            
-                           </table>
-           
-               
-             </div>
-        
 </nav>
 
 @endauth

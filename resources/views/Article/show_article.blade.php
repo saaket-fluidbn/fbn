@@ -23,7 +23,7 @@
           
          
               <a href="{{route('profile',['user'=>$article->writtenBy,'slug'=>str_slug($article->writtenBy->fname." ".$article->writtenBy->lname)])}}">
-              <img class="featurette-image img-fluid mx-auto  propic" src="/storage/profile_images/{{$article->writtenBy->hasProfile->profile_image}}" alt=""><h5 class="writer">{{ucfirst($article->writtenBy->fname)}}
+              <img class="featurette-image img-fluid mx-auto  propic" src="/storage/profile_images/thumbnails/{{$article->writtenBy->hasProfile->profile_image}}" alt=""><h5 class="writer">{{ucfirst($article->writtenBy->fname)}}
                
                 {{ucfirst($article->writtenBy->lname)}}</h5></a>
           
