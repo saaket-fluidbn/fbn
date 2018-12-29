@@ -18,6 +18,7 @@ mix.autoload({
 
     .js('resources/assets/js/app.js', 'public/js')
    .js('resources/assets/js/functions.js', 'public/js/functions.js')
+   .js('resources/assets/js/custom.js', 'public/js/custom.js')
    .sass('resources/assets/sass/app.scss', 'public/css').version()
 
    .sass('resources/assets/sass/custom.scss', 'public/css/custom.css').version()

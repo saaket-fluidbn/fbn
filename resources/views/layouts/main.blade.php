@@ -267,6 +267,7 @@ span.psw {
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
          
            <script  src="{{ asset('js/functions.js') }}" defer></script>
+           <script  src="{{ asset('js/custom.js') }}" defer></script>
        <script async src="{{asset('js/app.js')}}" defer></script>
        <script>
             function notiFunc() {

@@ -25,7 +25,7 @@ $(document).ready(function(){
     }, 4000); // <-- time in milliseconds
 });
 
-
+/*
 
 $(document).ready(function(){
 
@@ -124,7 +124,7 @@ $(document).ready(function(){
           }
       });
     });
-    
+    */
 // bookmark in feed
     $(document).ready(function(){
 
@@ -176,7 +176,7 @@ $(document).ready(function(){
                 count = count-1;
                 
                 $('#bookmark-row').attr('data-count',count);
-                console.log(count);
+                //console.log(count);
                 if(count==0){
                     $('div.nobook').css({"margin-top":"22%","text-align":"center"});
                     $('#nobookmark').text("No bookmarks left !");

@@ -22,6 +22,7 @@ class NotificationController extends Controller
                     'user'=>$user,
                     'notifications'=>$notifications
                 ];
+                $user->unreadNotifications->markAsRead();
                 return view('User.allNotifications')->with($data);
     }
 }
