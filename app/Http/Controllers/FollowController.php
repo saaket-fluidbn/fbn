@@ -41,7 +41,8 @@ class FollowController extends Controller
         $count = $otheruser->follows()->wherePivot('follower_id',$otheruser->id)->wherePivot('following_id','!=',$user->id)->wherePivot('following_id','!=',$otheruser->id)->wherePivotIn('following_id',$alfol,'and','NotIn')->count();
      
        if($count>0)
-            $output = '<h2 class="box" style="font-weight:bold;font-size:20px;margin-left:20px;">Follow suggestions <a href=""><i class="fa fa-close"></i></a></h2>
+     
+       $output = '<h2 class="box" style="font-weight:bold;font-size:20px;margin-left:20px;"></h2>
             
                         
              

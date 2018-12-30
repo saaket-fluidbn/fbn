@@ -62,7 +62,12 @@ $.ajaxSetup({
                  userId:userId,
                  _token :token
                 },
-                function(){
+                function(data){
+                    $("#f_sugg").addClass("w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-show")
+                    
+                    $("#fol_sugg").html(data.output);
+                    $("button.fol").addClass("pressed");
+                  
                     $('button.fol').text('Following');
                 }
               );
@@ -73,7 +78,12 @@ $.ajaxSetup({
                  userId:userId,
                  _token :token
                 },
-                function(){
+                function(data){
+                   // $("#f_sugg").removeClass("w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-show")
+                    
+                    $("#fol_sugg").html(data)
+                    $("button.fol").removeClass("pressed");
+                  
                     $('button.fol').text('Follow');
                 }
               );

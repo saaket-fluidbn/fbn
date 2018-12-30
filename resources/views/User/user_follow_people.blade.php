@@ -6,6 +6,9 @@ People {{ucfirst($user->fname)}} follows | fluidbN
 @section('content')
 
 <div class="container">
+ 
+        @if(count($follows)>0)
+
     <div style="margin-bottom:50px;">
         @if($authuser->id==$user->id)
     <h1 class="featurette-heading" style="font-weight:bold; font-size:30px;color:black;">People you follow</h1>
@@ -15,8 +18,7 @@ People {{ucfirst($user->fname)}} follows | fluidbN
 </div>
    
    
- 
-    @if(count($follows)>0)
+
     <div class="infinite-fol">
     @foreach($follows as $f)
  
@@ -41,9 +43,13 @@ People {{ucfirst($user->fname)}} follows | fluidbN
       
    
     @endforeach
-    @else
+    @elseif($authuser->id==$user->id)
+    
     <h2>{{"You don't follow anyone yet"}}</h2>
-    <a href="{{route('follow-people')}}"><small>Start following</small></a>
+    <a href="{{route('follow-people')}}"><h4 style="color:red;">Start following</h4></a>
+    @else
+    <h2>{{ucfirst($user->fname) ." isn't following anyone right now"}}</h2>
+   
     @endif
    {{$follows->links()}}
    </div>
