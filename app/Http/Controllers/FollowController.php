@@ -90,13 +90,12 @@ class FollowController extends Controller
 
            $article_id = $request['articleId'];
            $writer_id =  $request['userId'];
-           $fbnstory = StudioStories::find($article_id );
+          
            $article = Article::find($article_id);
            $writer = User::find($writer_id);
            $user = Auth::user();
            $like = $user->likes()->wherePivot('user_id',$user->id)->wherePivot('article_id', $article_id)->first();
-          $likeFs = $user->likesFs()->wherePivot('user_id',$user->id)->wherePivot('story_id', $article_id)->first();
-          
+         
            if($like){
                return null;
            }
@@ -120,21 +119,14 @@ class FollowController extends Controller
            return response()->json($data);
             
            }
-            if($likeFs){
-               return null;
-           }
-           else{
-                
-           $user->likesFs()->attach($fbnstory);
-          
-           }
+           
           
         }
         public function unlike(Request $request){
 
             $article_id = $request['articleId'];
             $article = Article::find($article_id);
-            $fbnstory = StudioStories::find($article_id );
+           
              $writer_id =  $request['userId'];
         
            $writer = User::find($writer_id);
@@ -147,7 +139,7 @@ class FollowController extends Controller
               
             $m = '{"user_id":'.$id.',"user_fname":"'.$f.'","user_lname":"'.$l.'","article_title":"'.$t.'","article_id":'.$article_id.',"message":"'.$msg.'"}';
           
-             $user->likesFs()->detach($fbnstory);   
+             
              $user->likes()->detach( $article);
              
               $writer->notifications()->where('notifiable_id',$writer->id)->where('type','App\Notifications\UserLiked')->where('data',$m)->delete();

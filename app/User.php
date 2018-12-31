@@ -76,9 +76,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Theory','like_theory','user_id','theory_id')->withTimestamps();
     
     }
-    public function bookmarksFs(){
-        return $this->belongsToMany('App\Studio\StudioStories','bookmarkfs','user_id','story_id')->withTimestamps();
-    }
+   
      public function bookmarksTheory(){
         return $this->belongsToMany('App\Theory','bookmark_theory','user_id','theory_id')->withTimestamps();
     }
@@ -91,7 +89,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Studio\StudioStories','likeFs','user_id','story_id')->withTimestamps();
     
     }
-   
+    public function bookmarksFs(){
+        return $this->belongsToMany('App\Studio\StudioStories','bookmarkfs','user_id','story_id')->withTimestamps();
+    }
 
     public function searches(){
         return $this->belongsToMany('App\Search','search_words','user_id','search_id')->withTimestamps();
