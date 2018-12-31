@@ -266,7 +266,7 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Article $article,$slug)
-    {
+    {  if(Auth::user()){
       
        $user = Auth::user();
        $otheruserId = $article->writtenBy->id;
@@ -314,6 +314,10 @@ class ArticleController extends Controller
         ];
          
         return view('Article.show_article')->with($data);
+    }
+        else 
+        return "<h1 style='featurette-heading-title'>Looks like something went wrong <a href='https://www.fluidbn.com'><strong> go to fluidbn</strong></a></h1>";
+        
     }
 
     // for external links

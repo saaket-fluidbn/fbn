@@ -174,3 +174,11 @@ Route::post('/workstation/fbn.studio/','Auth\StudioLoginController@login')->name
 Route::get('/workstation/fbn.studio/dashboard/','Studio\StudioController@dashboard')->name('studio-dashboard');
 //Route::post('/fbn.studio/store','Studio\StudioController@store')->name('storeContent');
 Route::get('/fluidbN-studio-story/{StudioStories}/{slug}','Studio\StudioController@show')->name('studio-story');
+// like studio story
+Route::post('/likeFbnStory','FollowController@likeFbnStory')->name('likeFbnStory');
+// unlike studio story
+Route::post('/unlikeFbnStory','FollowController@unlikeFbnStory')->name('unlikeFbnStory');
+// bookmark
+Route::post('/urlFbnStoryBookmark','FollowController@urlFbnStoryBookmark')->name('urlFbnStoryBookmark');
+// unmark
+Route::post('/urlFbnStoryUnmark','FollowController@urlFbnStoryUnmark')->name('urlFbnStoryUnmark');

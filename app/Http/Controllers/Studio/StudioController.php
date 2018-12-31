@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Studio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Genre;
+use Auth;
 use App\Studio\StudioStories;
 use Image;
 class StudioController extends Controller
@@ -57,9 +58,23 @@ class StudioController extends Controller
 
     }
     public function show(StudioStories $StudioStories,$slug){
-     $data = [
+        if(Auth::user()){
+        $user = Auth::user();
+        $likeFs = $user->likesFs()->wherePivot('user_id', $user->id)->wherePivot('story_id',$StudioStories->id)->first();
+        $bookmark = $user->bookmarksFs()->wherePivot('user_id',$user->id)->wherePivot('story_id',$StudioStories->id)->first();
+        $wows  = $StudioStories->likedBy()->wherePivot('story_id', $StudioStories->id)->count();
+     
+        $data = [
          'StudioStories'=>$StudioStories,
+         'wows'=>$wows,
+         'likeFs'=>$likeFs,
+         'user'=>$user,
+         'bookmark'=>$bookmark,
      ];
         return view('studio.show-story')->with($data);
     }
+    else 
+return "<h1>Looks like something went wrong <a href='https://www.fluidbn.com'><strong> go to fluidbn</strong></a></h1>";
+}
+
 }

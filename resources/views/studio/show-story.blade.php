@@ -19,12 +19,10 @@
           
           <div class="box" id="mainView" data-articleid="{{$StudioStories->id}}" >
               @auth
-              @php
-              $likeFs = Auth::user()->likesFs()->wherePivot('user_id',Auth::user()->id)->wherePivot('story_id',$StudioStories->id)->first();
-              @endphp
+            
               @endauth
             
-              <button class="btn btn-outline-success  btn-login" id="like"  style="margin-left:20px;margin-top:5px;" data-articleid="{{$StudioStories->id}}" type="submit">{{$likeFs ? "Thanks" : "Wow"}}</button>
+
           
                </div>
         
@@ -46,13 +44,19 @@
      
       <div class="container">
       <div class="row">
-      
+      @php
+          if($wows==0)
+          $w="";
+          else
+          $w=$wows;
+      @endphp
       
       
       <div class="col-12">
            <div class="lower-margin box">
           <h2 class="featurette-heading" style="margin-top:20px; color:black;">{{ucfirst($StudioStories->title)}}</h2>
-             </div>
+        <small  id="wows" style="color:black; font-size:15px;font-weight:bold;"><i class="fa fa-heart" style="color:red;font-size:15px;"> {{$w}}</i></small>     
+        </div>
                 <img class="featurette-image img-fluid mx-auto card" style="width:90%;" src="/storage/studio_images/{{$StudioStories->content}}" alt="">
                  
          
@@ -61,9 +65,12 @@
       </div>
   
    
-
       <footer>
-    
+            <div class="box lower-margin">
+                    <button class="btn  btn-login" id="likefs"  style="margin-left:20px;margin-top:5px;" data-articleid="{{$StudioStories->id}}" type="submit">{{$likeFs ? "Thanks" : "Wow"}}</button>
+                    <button class="btn   btn-login" style="margin-top:5px;" id='bookmarkfs' data-articleId="{{$StudioStories->id}}">{{$bookmark ? "Bookmarked" : "Bookmark"}}</button>
+            
+          </div>
   
         
         
@@ -71,7 +78,13 @@
     </div>
   
 
-
+<script>
+var token = "{{Session::token()}}";
+ var urlFbnStoryLike = "{{route('likeFbnStory')}}";
+ var urlFbnStoryUnlike = "{{route('unlikeFbnStory')}}";
+ var urlFbnStoryBookmark = "{{route('urlFbnStoryBookmark')}}";
+ var urlFbnStoryUnmark = "{{route('urlFbnStoryUnmark')}}";
+</script>
 
 
 

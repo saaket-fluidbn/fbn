@@ -18,4 +18,5 @@ class StudioUser extends Authenticatable
     public function hasRole(){
         return $this->hasOne('App\Studio\Role','role_id');
     }
+  
 }

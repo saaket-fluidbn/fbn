@@ -17,8 +17,10 @@ class StudioStories extends Model
    public function storyOfGenre(){
        return $this->belongsTo('App\Genre','genre_id');
    }
-   public function likedByFs(){
+   public function likedBy(){
     return $this->belongsToMany('App\User','likeFs','story_id','user_id')->withTimestamps();
 }
-   
+public function bookmarkedBy(){
+    return $this->belongsToMany('App\User','bookmarkFs','story_id','user_id')->withTimestamps();
+}
 }

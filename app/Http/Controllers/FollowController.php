@@ -194,5 +194,88 @@ class FollowController extends Controller
             $bookmark_view = view('User.bookmarks')->with('user_bookmarks',$user_bookmarks);
             return   $bookmark_view ;
          }
+
+         // for studio stories
+
+         // like function
+         public function likeFbnStory(Request $request){
+             
+            $article_id = $request['articleId'];
+       
+           $fbnstory = StudioStories::find($article_id );
+         
+           $user = Auth::user();
+         
+          $likeFs = $user->likesFs()->wherePivot('user_id',$user->id)->wherePivot('story_id', $article_id)->first();
+          if($likeFs){
+            return null;
+        }
+        else{
+             
+        $user->likesFs()->attach($fbnstory);
+       
+        
+          
+             $wows  =  $fbnstory->likedBy()->wherePivot('story_id', $article_id)->count();
+             if($wows>1)
+             $w = ' wows';
+             else
+             $w = ' wow'; 
+             $data = [
+               'wows'=>'  '.$wows.$w
+             ];
+
+            
+           return response()->json($data);
+            
+           }
+         
+         }
+         public function unlikeFbnStory(Request $request){
+            $article_id = $request['articleId'];
+         
+            $fbnstory = StudioStories::find($article_id );
+         
+         
+            $user = Auth::user();
+              
+             $user->likesFs()->detach($fbnstory);   
+            
+             
+             $wows  =  $fbnstory->likedBy()->wherePivot('story_id', $article_id)->count();
+             if($wows>1)
+             $w = ' wows';
+             else
+             $w = ' wow'; 
+             $data = [
+               'wows'=>'  '.$wows.$w
+             ];
+           return response()->json($data);
+              
+
+         }
+         // bookmark
+         public function urlFbnStoryBookmark(Request $request){
+            $article_id = $request['articleId'];
+            $article = StudioStories::find($article_id);
+            $user = Auth::user();
+            $bookmark = $user->bookmarksFs()->wherePivot('user_id',$user->id)->wherePivot('story_id', $article_id)->first();
+           
+            if($bookmark){
+                return null;
+            }
+            else{
+             $user->bookmarksFs()->attach($article);
+ 
+            }
+         }
+    // unmark
+    public function urlFbnStoryUnmark(Request $request){
+        $article_id = $request['articleId'];
+        $article = StudioStories::find($article_id);
+        $user = Auth::user();
+        $user->bookmarksFs()->detach($article);
+      
+    }
 }
 

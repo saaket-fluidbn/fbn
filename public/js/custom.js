@@ -10542,6 +10542,67 @@ $(document).ready(function () {
     }
   });
 });
+// for studio stories
+
+
+// bookmark
+$(document).ready(function () {
+
+  $('#bookmarkfs').on('click', function (event) {
+    event.preventDefault();
+    var articleId = 0;
+    articleId = $(this).attr('data-articleId');
+
+    if ($('#bookmarkfs').text() == "Bookmark") {
+      $('#bookmarkfs').text('Bookmarked');
+      $.post(urlFbnStoryBookmark, {
+        articleId: articleId,
+        _token: token
+      }, function () {
+        $('#bookmarkfs').text('Bookmarked');
+      });
+    } else if ($('#bookmarkfs').text() == "Bookmarked") {
+      $('#bookmarkfs').text('Bookmark');
+      $.post(urlFbnStoryUnmark, {
+        articleId: articleId,
+        _token: token
+      }, function () {
+        $('#bookmarkfs').text('Bookmark');
+      });
+    }
+  });
+});
+
+// like
+$(document).ready(function () {
+
+  $('#likefs').on('click', function (event) {
+    var articleId = 0;
+
+    articleId = $(this).attr('data-articleid');
+
+    if ($('#likefs').text() == "Wow") {
+      $('#likefs').text('Thanks');
+      $.post(urlFbnStoryLike, {
+        articleId: articleId,
+        _token: token
+      }, function (data) {
+        $('#likefs').text('Thanks');
+        $('#wows').text(data.wows);
+      });
+    } else if ($('#likefs').text() == "Thanks") {
+      $('#likefs').text('Wow');
+      $.post(urlFbnStoryUnlike, {
+        articleId: articleId,
+
+        _token: token
+      }, function (data) {
+        $('#likefs').text('Wow');
+        $('#wows').text(data.wows);
+      });
+    }
+  });
+});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
