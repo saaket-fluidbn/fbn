@@ -7,8 +7,55 @@
 <div class="box lower-margin">
 <h2 class="featurette-heading" style="font-weight:bold;font-size:50px;color:black;">My favourite stories</h2>
 </div>
+
+<div class="row">
+  @if(count($user_studio_bookmarks)>0)
+
+    
+
+    
+{{--studio stories--}}
+@foreach ($user_studio_bookmarks as $ra )
+ 
+   <div class="col-md-4">
+       
+      <a href="{{route('stories-genre',['genre'=>$ra->storyOfGenre])}}" <small class="genre-feed">{{ucfirst($ra->storyOfGenre->name)}}</small></a>
+      
+        <a href="{{route('studio-story',['StudioStories'=>$ra,'slug'=>str_slug($ra->title)])}}">
+        <div class="card-related" style="width:100%;">
+          <img class="featurette-image img-fluid mx-auto img-card" src="/storage/studio_images/{{$ra->title_image}}" alt="">
+          <div class="container-related lower-margin" style="width:100%;">
+            <h2  class="featurette-heading-small" style="font-size:25px;font-weight:bold;">{{ucfirst($ra->title)}}</h2>
+           
+           
+            <div class="" style="margin-bottom:5px;">
+                <img class="featurette-image img-fluid mx-auto  propic-small" src="/storage/logo/logo.png" alt=""><small style="font-size:15px"> fluidbN studio</small>
+              </div>
+                
+              </div>
+             {{--
+              <div class="" style="margin-bottom:5px;">
+              <button class="btn   btn-login userbookmark" id="{{$ra->id}}" data-articleId="{{$ra->id}}">Remove</button>
+             </div>
+             --}}
+            </div>
+       
+        </a>
+       
+          <br/>
+          
+          
+   </div>
+
+    @endforeach
+
+
+
+  
+  @endif
+</div>
 @if(count($user_bookmarks)>0)
-<div class="box">
+
 @php
 $c = Auth::user()->bookmarks()->wherePivot('user_id',Auth::user()->id)->count();
 @endphp
@@ -19,7 +66,9 @@ $c = Auth::user()->bookmarks()->wherePivot('user_id',Auth::user()->id)->count();
 </div>
 
 <div class="row featurette" id="bookmark-row" data-count="{{$c}}">
+
     
+  {{--user stories--}}
   @foreach ( $user_bookmarks as $ra )
  
    <div class="col-md-4 bookmarked">
@@ -55,17 +104,18 @@ $c = Auth::user()->bookmarks()->wherePivot('user_id',Auth::user()->id)->count();
 
 @else
 <div class="box" style="margin-top:10%;">
-    <h2 class="featurette-heading-feed" style="color:mediumvioletred">{{'You haven\'t bookmarked anything '.ucfirst(Auth::user()->fname).' !'}}</h2>
+    <h2 class="featurette-heading-feed" style="color:black">{{ucfirst(Auth::user()->fname).' your user story bookmarks live here !'}}</h2>
     <i class="material-icons" style="font-size:48px;color:red;">cloud</i>
     <i class="fa fa-cloud"></i>
     
 </div>
 <div class="box">
-  <a href="{{route('feed')}}" class="writer">Read now ! <i class="fa fa-book" style="font-size:50px;color:#0c4c8a;"></i></a>
+  <a href="{{route('feed')}}" class="writer"><strong>Read now !</strong></a>
 
 </div>
-</div>
+
   @endif
+
  <script>
    @include('includes.buttons')
  </script>

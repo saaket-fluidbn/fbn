@@ -180,11 +180,27 @@ class FollowController extends Controller
           
          }
          public function showBookmark(){
+            if(Auth::user()){
+                $user = Auth::user();
+                $user_bookmarks = $user->bookmarks()->wherePivot('user_id',$user->id)->latest()->get();
+                $user_studio_bookmarks = $user->bookmarksfs()->wherePivot('user_id',$user->id)->latest()->get();
+               $data = [
+                'user_bookmarks'=>$user_bookmarks,
+                'user_studio_bookmarks'=>$user_studio_bookmarks
+               ];
+                $bookmark_view = view('User.bookmarks')->with($data);
+                return   $bookmark_view ;
+            } 
+            else
+            return "
+            <div class='row'>
+            <div class='col-md-6'>
+            <h1>Looks like something went wrong <a href='https://www.fluidbn.com'><strong> go to fluidbn</strong></a></h1>
+            </div>
+            </div>
+            ";
              
-            $user = Auth::user();
-            $user_bookmarks = $user->bookmarks()->wherePivot('user_id',$user->id)->latest()->get();
-            $bookmark_view = view('User.bookmarks')->with('user_bookmarks',$user_bookmarks);
-            return   $bookmark_view ;
+          
          }
 
          // for studio stories

@@ -98,6 +98,7 @@
    
      <div class="col-md-6">
        <a href="{{route('stories-genre',['genre'=>$a->storyOfGenre])}}" <small class="genre-feed">{{ucfirst($a->storyOfGenre->name)}}</small></a>
+      
        <a href="{{route('studio-story',['StudioStories'=>$a,'slug'=>str_slug($a->title)])}}">
         
        <div class="card-related lower-margin featured-article">
