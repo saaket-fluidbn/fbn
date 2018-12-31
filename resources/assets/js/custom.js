@@ -205,4 +205,22 @@ $.ajaxSetup({
                     }
                  });
                });
-     
+     // curated story accordion
+
+     // story
+     $(document).ready(function(){
+
+        $('#story-btn').on('click',function(){
+            $('#fbn-theory').addClass('w3-hide');
+            $('#fbn-story').removeClass('w3-hide');
+        });
+     });
+
+     // theory
+     $(document).ready(function(){
+
+        $('#theory-btn').on('click',function(){
+            $('#fbn-story').addClass('w3-hide');
+            $('#fbn-theory').removeClass('w3-hide');
+        });
+     });

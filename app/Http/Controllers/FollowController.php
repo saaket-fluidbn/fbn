@@ -195,7 +195,7 @@ class FollowController extends Controller
             return "
             <div class='row'>
             <div class='col-md-6'>
-            <h1>Looks like something went wrong <a href='https://www.fluidbn.com'><strong> go to fluidbn</strong></a></h1>
+            <h1>Looks like something went wrong, cache is cleared <a href='https://www.fluidbn.com'><strong> go to fluidbn</strong></a></h1>
             </div>
             </div>
             ";

@@ -103,7 +103,7 @@ class FeedController extends Controller
         }
         
         public function followingStory(){
-            
+            if(Auth::user()){
             $user = Auth::user();
             $following = $user->follows()->wherePivot('follower_id',$user->id)->get();
             
@@ -112,6 +112,7 @@ class FeedController extends Controller
                 $id[] = $f->id;
             }
             $follow_story = Article::latest()->where('finished',1)->where('user_id','!=',$user->id)->whereIn('user_id',$id)->paginate(12);
+            $follow_theory = Theory::latest()->where('user_id','!=',$user->id)->whereIn('user_id',$id)->paginate(12);
             $same_place ='';
             if($user->hasProfile->college){
                 $same_place = ucfirst($user->hasProfile->college);
@@ -122,11 +123,21 @@ class FeedController extends Controller
             
             $data = [
                 'follow_story'=>$follow_story,
+                'follow_theory'=>$follow_theory,
                 'same_place'=>$same_place,
                 'user'=>$user
                 
                 ];
             return view('User.curated_story')->with($data);
+            }
+            else
+            return "
+            <div class='row'>
+            <div class='col-md-6'>
+            <h1>Looks like something went wrong, cache is cleared <a href='https://www.fluidbn.com'><strong> go to fluidbn</strong></a></h1>
+            </div>
+            </div>
+            ";
         }
         
         public function followPeople(){
