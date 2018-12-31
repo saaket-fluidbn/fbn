@@ -113,6 +113,7 @@ class FeedController extends Controller
             }
             $follow_story = Article::latest()->where('finished',1)->where('user_id','!=',$user->id)->whereIn('user_id',$id)->paginate(12);
             $follow_theory = Theory::latest()->where('user_id','!=',$user->id)->whereIn('user_id',$id)->paginate(12);
+            
             $same_place ='';
             if($user->hasProfile->college){
                 $same_place = ucfirst($user->hasProfile->college);
