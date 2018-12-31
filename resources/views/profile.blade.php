@@ -37,7 +37,7 @@
             {{ucfirst($user->lname)}}
         </h5>
         <div class="container1">
-           <p class="w3-center"><img class="featurette-image img-fluid w3-circle" style="box-shadow:5px 5px 5px #888888;height:106px;width:106px" src="/storage/profile_images/{{$user->hasProfile->profile_image}}" alt="" onclick="document.getElementById('modal02').style.display='block'"></p>
+          <p class="w3-center"><img class="featurette-image img-fluid w3-circle" style="box-shadow:5px 5px 5px #888888;height:106px;width:106px" src="/storage/profile_images/{{$user->hasProfile->profile_image}}" alt="" onclick="document.getElementById('modal02').style.display='block'"></p>
            <div id="modal02" class="w3-modal" onclick="this.style.display='none'">
             <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
             <div class="w3-modal-content w3-animate-zoom">
@@ -54,9 +54,9 @@
         </div>
            <hr>
            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>{{$user->hasProfile->about }}</p>
-           <p class="writer"> @if($user->hasProfile->education != null && $user->hasProfile->yos != null && $user->hasProfile->college != null){{$user->hasProfile->education." ".$user->hasProfile->yos.' student @ '. $user->hasProfile->college}}@endif</p>
-           <p class="writer"> @if($user->hasProfile->startup != null){{'Student startup : '.ucfirst($user->hasProfile->startup)}}@endif</p>
-           <p class="writer"> @if($user->hasProfile->designation != null){{$user->hasProfile->designation .' @ '. $user->hasProfile->company}}@endif</p>
+           <p class="writer"> @if($user->hasProfile->education != null && $user->hasProfile->yos != null && $user->hasProfile->college != null)<i class="fa fa-suitcase w3-text-theme" ></i> {{$user->hasProfile->education." ".$user->hasProfile->yos.' student @ '. $user->hasProfile->college}}@endif</p>
+           <p class="writer"> @if($user->hasProfile->startup != null)<i class="fa fa-suitcase w3-text-theme" ></i> {{' Student startup : '.ucfirst($user->hasProfile->startup)}}@endif</p>
+           <p class="writer"> @if($user->hasProfile->designation != null)<i class="fa fa-suitcase w3-text-theme" ></i> {{$user->hasProfile->designation .' @ '. $user->hasProfile->company}}@endif</p>
            @if($followers!=0)<p  class="" id="followers" style="margin-bottom:5px;font-size:15px;font-weight:bold;">{{$followers.' '.$f.'  '}}</p>
            @endif
         
@@ -81,6 +81,9 @@
           @if(Auth::user()->id!=$user->id)<button class="btn btn-login fol {{$cl}}" id="" data-userid="{{$user->id}}"
                         
             style="margin-bottom:5px;margin-left:5px;">{{$follow?"Following":"Follow"}}</button>
+           
+              <div class" w3-hide w3-container" id="fol-sugg-tab">
+            <h3 class="w3-large" style="color:black;font-weight:bold;">Follow suggestions  <button class="w3-button w3-black" id="fol-sugg-cls"><i class="fa fa-close"></i></button></h3>
             <table class="table table-bordered table-hover">
                 
               <tbody id="fol_sugg">
@@ -88,6 +91,7 @@
               </tbody>
                
               </table>
+            </div>
               
             @endif
           
@@ -143,12 +147,10 @@
                      
                      <div class="col-sm-4">
                      <a href="{{route('profile',['user'=>$f,'slug'=>str_slug($f->fname." ".$f->lname)])}}">
-                     <img class="featurette-image img-fluid mx-auto propic-small" src="/storage/profile_images/thumbnails/{{$f->hasProfile->profile_image}}" alt="" >
-                      
+                     <img class="featurette-image img-fluid mx-auto propic-small" src="/storage/profile_images/thumbnails/{{$f->hasProfile->profile_image}}" alt="">
                      <small class="writer"> {{ucfirst($f->fname).' '.ucfirst($f->lname) }}</small>
                      </a>
                      </div>
-                    
                      @endforeach
                      
                      </div> 

@@ -42,7 +42,7 @@ class FollowController extends Controller
      
        if($count>0)
      
-       $output = '<h2 class="box" style="font-weight:bold;font-size:20px;margin-left:20px;"></h2>
+       $output = '
             
                         
              
@@ -60,7 +60,7 @@ class FollowController extends Controller
                "</tr>";
                 
             }
-            return response()->json(['output'=>$output]);
+            return response()->json(['output'=>$output,'count'=>$count]);
         
        }
     }

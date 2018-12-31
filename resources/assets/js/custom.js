@@ -12,7 +12,9 @@ $.ajaxSetup({
     }
   });
   
-  
+  $(document).ready(function(){
+      $('#fol-sugg-tab').addClass('w3-hide');
+  }); 
   
   
   $(document).ready(function(){
@@ -58,12 +60,15 @@ $.ajaxSetup({
             userId = $(this).attr('data-userid');
             if($('button.fol').text()=="Follow"){
                 $('button.fol').text('Following');
+               
                 $.post(urlFollow,{
                  userId:userId,
                  _token :token
                 },
                 function(data){
-                    $("#f_sugg").addClass("w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-show")
+                    if(data.count>0){
+                        $("#fol-sugg-tab").removeClass("w3-hide");
+                    }
                     
                     $("#fol_sugg").html(data.output);
                     $("button.fol").addClass("pressed");
@@ -74,13 +79,14 @@ $.ajaxSetup({
             }
             else if($('button.fol').text()=="Following"){
                 $('button.fol').text('Follow');
+                $("#fol-sugg-tab").addClass("w3-hide");
                 $.post(urlUnfollow,{
                  userId:userId,
                  _token :token
                 },
                 function(data){
                    // $("#f_sugg").removeClass("w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-show")
-                    
+                 
                     $("#fol_sugg").html(data)
                     $("button.fol").removeClass("pressed");
                   
@@ -93,7 +99,13 @@ $.ajaxSetup({
         });
      });
      
+// to close follow suggestion table
 
+$(document).ready(function(){
+    $('#fol-sugg-cls').on('click',function(){
+        $('#fol-sugg-tab').addClass('w3-hide');
+    });
+});
       
   
   

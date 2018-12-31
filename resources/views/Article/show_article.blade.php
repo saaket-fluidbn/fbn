@@ -51,13 +51,16 @@
       
            @endif
                </div>
-        <table class="table table-bordered table-hover">
-                
+               <div class" w3-hide w3-container" id="fol-sugg-tab">
+                  <h3 class="w3-large" style="color:black;font-weight:bold;">Follow suggestions  <button class="w3-button w3-black" id="fol-sugg-cls"><i class="fa fa-close"></i></button></h3>
+                  <table class="table table-bordered table-hover">
+                      
                     <tbody id="fol_sugg">
                     
                     </tbody>
                      
                     </table>
+                  </div>
       </div>
       
      <div class="col-sm-4">
