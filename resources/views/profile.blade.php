@@ -213,26 +213,29 @@
          @if(Auth::user())
          @if(Auth::user()->id==$user->id)
         
-              <div class="w3-container w3-padding">
+              <div style="margin-bottom:30px;">
                 
-                <button type="button" class="btn-feed btn-login" style="margin-top:5px;"onclick="location.href='{{route('write')}}'"><i class="fa fa-pencil"></i> Write a story</button> 
-                <button type="button" class="btn-feed btn-login" style="margin-top:5px;" onclick="location.href='{{route('write-theory')}}'"><i class="fa fa-pencil"></i> Share a theory</button> 
+                <button class="w3-button" style="margin-top:5px;"onclick="location.href='{{route('write')}}'"><i class="fa fa-pencil"></i> Write a story</button> 
+                <button  class="w3-button" style="margin-top:5px;" onclick="location.href='{{route('write-theory')}}'"><i class="fa fa-pencil"></i> Share a theory</button> 
               </div>
    
        
         @endif
         @endif
-
-      
-            
+        <div style="margin-left:35px; margin-bottom:30px;" >
+        <button  class="w3-button w3-black" id="story-btn-p">
+            Stories </button>
+             <button  class="w3-button w3-black" id="theory-btn-p">
+              Theories </button>
+            </div>
           {{-- stories --}}
            
-         
+          <div class="w3-hide w3-container" id="fbn-story-p">
         @if(count($article)>0)
         <div class="lower-margin" style="text-align:center;">
-            <h1 class="featurette-heading-title">@if(Auth::user()->id==$user->id) {{"Your stories"}}
+            <h1 class="featurette-heading-feed">@if(Auth::user()->id==$user->id) {{"Your stories"}}
             @else 
-           {{"All stories by ".ucfirst($user->fname)}}@endif</h1>
+           {{"By ".ucfirst($user->fname)}}@endif</h1>
               </div>
         
                   
@@ -278,62 +281,15 @@
                      @endif
     {{-- end stories --}}
 
-
-          
-            
-          {{-- theories --}}
-           
-         
-          @if(count($theory)>0)
-          <div class="lower-margin" style="text-align:center;">
-              <h1 class="featurette-heading-title">@if(Auth::user()->id==$user->id) {{"Your theories"}}
-              @else 
-             {{"All theories by ".ucfirst($user->fname)}}@endif</h1>
-                </div>
-          
-                    
-          
-  
-                     <div class="infinite-theory">
-                        @foreach ( $theory as $a )
-                        
-                        <a href="{{route('show-theory',['theory'=>$a,'slug'=>str_slug($a->title)])}}">
-                     
-                         
-                        <div class="w3-container w3-card w3-white w3-round w3-margin">
-                 
-                          
-                          <h2 class="featurette-heading-feed">{{ucfirst($a->title)}}</h2>
-                          <hr class="w3-clear">
-                          
-                          <p class="lead">{!!wordwrap(str_limit($a->content,100),50,"<br>\n",TRUE)!!}</p>
-                        </div> 
-                        </a>
-          @endforeach
-          {{$theory->links()}}
-          </div>
-          @elseif(Auth::user()->id == $user->id)
-                
-                        <p class="" style="color:black;">{{ucfirst($user->fname).' looks like you haven\'t shared any theory...'}} <a href="{{route('write-theory')}}"><strong>Share !</strong></a></p>
-                   @else        
-                   <p class="" style="color:black;">{{'Sorry currently no theories from '.ucfirst($user->fname).' but sure to come till then...'}}<a href="{{route('feed')}}"><strong>Explore fluidbN !</strong></a></h2>
-                      
-                   
-                       @endif
-      {{-- end theories --}}
-  
-
-
-
-            
+     
           {{-- liked stories --}}
            
          
           @if(count($liked_articles)>0)
           <div class="lower-margin" style="text-align:center;">
-              <h1 class="featurette-heading-title">@if(Auth::user()->id==$user->id) {{"Stories you liked "}}<i class="fa fa-heart" style="font-size:35px;color:red;"></i>
+              <h1 class="featurette-heading-feed">@if(Auth::user()->id==$user->id) {{"Stories you liked "}}<i class="fa fa-heart" style="font-size:35px;color:red;"></i>
                 @else 
-               {{"Stories liked by ".ucfirst($user->fname) }}
+               {{"Liked by ".ucfirst($user->fname) }}
                @endif</h1>
                </div>
           
@@ -374,7 +330,56 @@
           {{$liked_articles->links()}}
                       </div>
                        @endif
+          </div>
       {{-- end liked stories --}}
+          
+
+          {{-- theories --}}
+           
+          <div class="w3-hide w3-container" id="fbn-theory-p">  
+          @if(count($theory)>0)
+          <div class="lower-margin" style="text-align:center;">
+              <h1 class="featurette-heading-feed">@if(Auth::user()->id==$user->id) {{"Your theories"}}
+              @else 
+             {{"By ".ucfirst($user->fname)}}@endif</h1>
+                </div>
+          
+                    
+          
+  
+                     <div class="infinite-theory">
+                        @foreach ( $theory as $a )
+                        
+                        <a href="{{route('show-theory',['theory'=>$a,'slug'=>str_slug($a->title)])}}">
+                     
+                         
+                        <div class="w3-container w3-card w3-white w3-round w3-margin">
+                 
+                          
+                          <h2 class="featurette-heading-feed">{{ucfirst($a->title)}}</h2>
+                          <hr class="w3-clear">
+                          
+                          <p class="lead">{!!wordwrap(str_limit($a->content,100),50,"<br>\n",TRUE)!!}</p>
+                        </div> 
+                        </a>
+          @endforeach
+          {{$theory->links()}}
+          </div>
+          @elseif(Auth::user()->id == $user->id)
+                
+                        <p class="" style="color:black;">{{ucfirst($user->fname).' looks like you haven\'t shared any theory...'}} <a href="{{route('write-theory')}}"><strong>Share !</strong></a></p>
+                   @else        
+                   <p class="" style="color:black;">{{'Sorry currently no theories from '.ucfirst($user->fname).' but sure to come till then...'}}<a href="{{route('feed')}}"><strong>Explore fluidbN !</strong></a></h2></p>
+                      
+                   
+                       @endif
+                   </div>
+      {{-- end theories --}}
+  
+
+
+
+       
 
 
 

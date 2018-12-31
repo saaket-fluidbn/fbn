@@ -236,3 +236,27 @@ $(document).ready(function(){
             $('#fbn-theory').removeClass('w3-hide');
         });
      });
+
+     // profile accordion
+
+     
+     // story
+     $(document).ready(function(){
+
+        $('#story-btn-p').on('click',function(){
+            $('#fbn-theory-p').addClass('w3-hide');
+            $('#fbn-story-p').removeClass('w3-hide');
+        });
+     });
+
+     // theory
+     $(document).ready(function(){
+
+        $('#theory-btn-p').on('click',function(){
+            $('#fbn-story-p').addClass('w3-hide');
+            $('#fbn-theory-p').removeClass('w3-hide');
+        });
+     });
+     $(document).ready(function(){
+        $('#fbn-story-p').removeClass('w3-hide');
+     });
