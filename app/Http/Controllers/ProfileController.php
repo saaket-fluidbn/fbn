@@ -61,7 +61,7 @@ class ProfileController extends Controller
         $followers = $user->followedBy()->wherePivot('following_id',$user->id)->count();
         $follows = $user->followedBy()->wherePivot('following_id',$user->id)->wherePivot('follower_id','!=',$user->id)->limit(21)->get(); 
          $liked_articles = $user->likes()->latest()->paginate(10);
-         $userGenre = $user->hasGenre;
+          $userGenre = $user->hasGenre;
         $data = [
           'article'=>$article,
           'theory'=>$theory,
@@ -165,16 +165,15 @@ class ProfileController extends Controller
         if($request->hasFile('profile_image')){
             $originalImage= $request->file('profile_image');
            $thumbnailImage = Image::make($originalImage)->orientate();
-            $Path = public_path('storage').'/profile_images/';
+           // $Path = public_path('storage').'/profile_images/';
            
-            //$thumbnailImage->resize(400,400);
-            $thumbnailImage->save($Path.time().$originalImage->getClientOriginalName()); 
-            
+            $thumbnailImage->save(public_path('/storage/profile_images/'.Auth::user()->id.'_'.str_slug(Auth::user()->fname).'_'.$originalImage->getClientOriginalName()));
+              
+              
               // thumbnail image storing
-              $thumbnailImage->resize(100,100)->save(public_path('/storage/profile_images/thumbnails/'.time().$originalImage->getClientOriginalName()));
-            
-            
-            $imageName = time().$originalImage->getClientOriginalName();
+              $thumbnailImage->resize(100,100)->save(public_path('/storage/profile_images/thumbnails/'.Auth::user()->id.'_'.str_slug(Auth::user()->fname).'_'.$originalImage->getClientOriginalName()));
+           
+            $imageName = Auth::user()->id.'_'.str_slug(Auth::user()->fname).'_'.$originalImage->getClientOriginalName();
             
            }
            else{
@@ -202,7 +201,9 @@ class ProfileController extends Controller
     else
      return redirect()->back()->with('error',"User with this email doesn't exist");
     }
-    public function seeFollowing(User $user,$slug){
+    
+    // to see following people
+     public function seeFollowing(User $user,$slug){
         $authuser = Auth::user();
         $follows = $user->follows()->wherePivot('follower_id',$user->id)->wherePivot('following_id','!=',$user->id)->paginate(10);
         $data = [

@@ -97,17 +97,16 @@ class AfterSignupController extends Controller
                 $originalImage= $request->file('image');
            
            $thumbnailImage = Image::make($originalImage)->orientate();
-            $Path = public_path('storage').'/profile_images/';
+            //$Path = public_path('storage').'/profile_images/';
            
             //$thumbnailImage->resize(400,400);
-            $thumbnailImage->save($Path.time().$originalImage->getClientOriginalName()); 
+            $thumbnailImage->save(public_path('/storage/profile_images/'.Auth::user()->id.'_'.str_slug(Auth::user()->fname).'_'.$originalImage->getClientOriginalName()));
               
               
               // thumbnail image storing
-              $thumbnailImage->resize(100,100)->save(public_path('/storage/profile_images/thumbnails/'.time().$originalImage->getClientOriginalName()));
-            
+              $thumbnailImage->resize(100,100)->save(public_path('/storage/profile_images/thumbnails/'.Auth::user()->id.'_'.str_slug(Auth::user()->fname).'_'.$originalImage->getClientOriginalName()));
            
-            $imageName = time().$originalImage->getClientOriginalName();
+            $imageName = Auth::user()->id.'_'.str_slug(Auth::user()->fname).'_'.$originalImage->getClientOriginalName();
 
                 
             }
@@ -143,10 +142,9 @@ class AfterSignupController extends Controller
             $profile->save();
                   
                    $useri = Auth::user();
-                 // welcome notis to user
-                   $useri->notify(new UserWelcome($useri));
-                 
-                  Mail::to($useri)->send(new Welcome($user));
+                 // notify on signup
+                  $useri->notify(new UserWelcome($useri));
+                 //  Mail::to($useri)->send(new Welcome($useri));
        $article = Article::orderBy('id','desc')->get();
       
        $user_genre = $useri->hasGenre()->wherePivot('user_id',$useri->id)->get();
