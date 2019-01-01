@@ -5,7 +5,7 @@ Signup - create-profile | fluidbN
 @endsection
 
 @section('content')
-<div class="w3-container">
+<div class="container">
 <div class="box lower-margin"> 
 
 <h1 style="color:mediumvioletred;">Welcome to fluidbN family {{ucfirst(Auth::user()->fname)}} !!</h1>
@@ -25,7 +25,7 @@ Signup - create-profile | fluidbN
 {!! Form::open(['route'=>'get-me-in','method'=>'POST','files'=>true,'enctype'=>'multipart/form-data']) !!}  
 
 <div class="form-group">
-    {{Form::label('image','Upload profile pic',['class'=>'btn   btn-login'])}}
+    {{Form::label('image','Upload profile pic',['class'=>'btn btn-outline-success btn-login'])}}
     {{Form::file('image')}}
         </div>
         <div class="form-group">
@@ -47,18 +47,18 @@ Signup - create-profile | fluidbN
 {{Form::label('student','Student',['class'=>'pro_info form-control'])}}
 <label class="switch">
  
-  {{Form::checkbox('student','',null,['placeholder'=>'','id'=>'student-btn'])}}
+  {{Form::checkbox('student','',null,['placeholder'=>'','id'=>'s-f'])}}
   <span class="slider round"></span>
 
 </label>
 {{Form::label('professional','Professional',['class'=>'pro_info form-control'])}}
 <label class="switch">
 
-  {{Form::checkbox('professional','',null,['placeholder'=>'','id'=>'prof-btn'])}}
+  {{Form::checkbox('professional','',null,['placeholder'=>'','id'=>'p-f'])}}
   <span class="slider round"></span>
 
 </label>
-  <div class="w3-hide" id="student-tab" data-std="zero">
+  <div class="student" id="student-form">
 
    <div class="form-group">
       {{-- {{Form::label('education','Your current education',['class'=>'pro_info form-control'])}}--}}
@@ -84,9 +84,9 @@ Signup - create-profile | fluidbN
 <div class="form-group">
   {{Form::text('weburl','',['class'=>'form-control','placeholder'=>'Web address of company'])}}  
     </div>
-   {{Form::submit('Get me in',['class'=>'btn   btn-login'])}}
+   {{Form::submit('Get me in',['class'=>'btn btn-outline-success btn-login'])}}
     </div> 
-<div class="w3-hide" id="prof-tab">
+<div class="professional" id="professional-form">
 
         <div class="form-group">
 {{Form::label('designation','Your designation',['class'=>'pro_info form-control'])}}
@@ -97,7 +97,7 @@ Signup - create-profile | fluidbN
 {{Form::label('company','Your workplace ',['class'=>'pro_info form-control'])}}
 {{Form::text('company','',['id'=>'',  'class'=>'form-control','placeholder'=>'','id'=>'comp'])}}
 </div>
-{{Form::submit('Get me in',['class'=>'btn   btn-login'])}}
+{{Form::submit('Get me in',['class'=>'btn btn-outline-success btn-login'])}}
 </div>
 
  {!! Form::close() !!}

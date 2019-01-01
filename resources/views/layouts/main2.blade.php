@@ -19,13 +19,16 @@
     <meta name="author" content="">
             <!-- CSRF Token -->
             <meta name="csrf-token" content="{{ csrf_token() }}">
-                      
+            <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>    
+            <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+      
              
              <!-- Styles -->
             <link href="{{ asset('css/app.css') }}" rel="stylesheet">
           
                        <!-- Custom styles -->
                    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
+                   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
                    
@@ -46,7 +49,7 @@
 
           
             <style>
-           
+           body{font-family: sans-serif}
              </style>
            
         </head>
@@ -68,6 +71,7 @@
        
          
            <script  src="{{ asset('js/functions.js') }}" defer></script>
+           <script  src="{{ asset('js/custom.js') }}" defer></script>
        <script async src="{{asset('js/app.js')}}" defer></script>
        
        <script>

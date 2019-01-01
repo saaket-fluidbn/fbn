@@ -260,3 +260,28 @@ $(document).ready(function(){
      $(document).ready(function(){
         $('#fbn-story-p').removeClass('w3-hide');
      });
+
+     // after signup create profile student -professional switch accordion
+
+     
+     // student
+     $(document).ready(function(){
+
+        $('#student-btn').on('click',function(){
+            
+                $('#student-tab').removeClass('w3-hide');
+                $('#prof-tab').addClass('w3-hide');
+           
+            });
+     });
+
+     // professional
+     $(document).ready(function(){
+
+        $('#prof-btn').on('click',function(){
+            $('#student-tab').addClass('w3-hide');
+            $('#prof-tab').removeClass('w3-hide');
+        });
+     });
+
+    
