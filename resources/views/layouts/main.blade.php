@@ -53,7 +53,9 @@
 
          <script charset="utf-8" src="https://ucarecdn.com/libs/widget/3.6.1/uploadcare.full.min.js"></script>
          --}}
-      <style>      
+      <style>  
+          
+            
         html, body, h1, h2, h3, h4, h5 {font-family: "Raleway", sans-serif}                         
   /* Full-width input fields */
 input[type=text], input[type=password] {

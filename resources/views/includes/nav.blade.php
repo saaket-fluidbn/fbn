@@ -9,7 +9,7 @@
     </a>
  
     <!-- Right-sided navbar links -->
-    <div class="w3-display-middle w3-hide-small w3-hide-medium" id="nav-p" style="">
+    <div class="w3-display-right w3-hide-small w3-hide-medium" id="nav-p" style="">
       {{--<a href="#about" class="w3-bar-item w3-button">About</a>--}}
       <button onclick="location.href='/feed'" class="w3-bar-item ">Feed</button>
   <button onclick="location.href='{{route('curated-story')}}'"  class="w3-bar-item w3-button">Curated stories</button>
