@@ -111,8 +111,8 @@ class FeedController extends Controller
             foreach($following as $f){
                 $id[] = $f->id;
             }
-            $follow_story = Article::latest()->where('finished',1)->where('user_id','!=',$user->id)->whereIn('user_id',$id)->paginate(12);
-            $follow_theory = Theory::latest()->where('user_id','!=',$user->id)->whereIn('user_id',$id)->paginate(12);
+            $follow_story = Article::latest()->where('finished',1)->where('user_id','!=',$user->id)->whereIn('user_id',$id)->with(['writtenBy','ofGenre'])->paginate(12);
+            $follow_theory = Theory::latest()->where('user_id','!=',$user->id)->whereIn('user_id',$id)->with('writtenBy')->paginate(12);
             
             $same_place ='';
             if($user->hasProfile->college){

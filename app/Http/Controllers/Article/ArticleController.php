@@ -52,15 +52,16 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create($id=NULL)
-    {
-        $genres = Genre::all();
+
+    { 
+         $genres = Genre::with(['genreOf','hasArticles','hasStories'])->get();
         $selectGenre=[];
         foreach($genres as $g){
             $selectGenre[$g->id] = $g->name;
         }
          Session::put('selectGenre',$selectGenre);
  
-                $unfinished_articles = Article::where('user_id',Auth::user()->id)->where('finished',0)->orderBy('id','desc')->get();
+                $unfinished_articles = Article::where('user_id',Auth::user()->id)->where('finished',0)->orderBy('id','desc')->with(['writtenBy','ofGenre'])->get();
                 
                 
                     return view('Article.write')->with('selectGenre',$selectGenre)->with('unfinished_articles',$unfinished_articles);
@@ -278,9 +279,8 @@ class ArticleController extends Controller
       
        $bookmark = $user->bookmarks()->wherePivot('user_id',$user->id)->wherePivot('article_id', $article->id)->first();
       
-       $related_articles = Article::where('genre_id',$article->genre_id)->where('id','!=',$article->id)->where('finished',1)->where('user_id','!=',$user->id)->limit(3)->get();
-       
-       $articles_of_samewriter = Article::where('user_id',$article->writtenBy->id)->where('id','!=',$article->id)->where('finished',1)->where('user_id','!=',$user->id)->limit(3)->get();
+       $related_articles = Article::where('genre_id',$article->genre_id)->where('id','!=',$article->id)->where('finished',1)->where('user_id','!=',$user->id)->limit(3)->with(['ofGenre','writtenBy'])->get();
+       $articles_of_samewriter = Article::where('user_id',$article->writtenBy->id)->where('id','!=',$article->id)->where('finished',1)->where('user_id','!=',$user->id)->limit(3)->with(['ofGenre','writtenBy'])->get();
         // again consider view table
          $user->views()->attach($article);
 
@@ -290,13 +290,13 @@ class ArticleController extends Controller
          $a->views = $views;
          $a->save();
          // select genre dropdown
-         $genres = Genre::all();
+         $genres = Genre::with(['genreOf','hasArticles','hasStories'])->get();
          $selectGenre=[];
           foreach($genres as $g){
              $selectGenre[$g->id] = $g->name;
          }
         
-        $comments = Comments::where('article_id',$article->id)->latest()->paginate(5);
+       // $comments = Comments::where('article_id',$article->id)->latest()->paginate(5);
          $data = [
             'article'=>$article,
             'like'=>$like,
@@ -308,7 +308,7 @@ class ArticleController extends Controller
             'selectGenre'=>$selectGenre,
             'wows'=>$wows,
             'user'=>$user,
-            'comments'=>$comments,
+           //'comments'=>$comments,
             'articleImages'=>$articleImages 
           
         ];
@@ -511,7 +511,7 @@ class ArticleController extends Controller
 
 public function sameUserTheories(User $user){
 
-    $theories = Theory::where('user_id',$user->id)->latest()->paginate(12);
+    $theories = Theory::where('user_id',$user->id)->latest()->with('writtenBy')->paginate(12);
     $data = [
         'theories'=>$theories,
         'user'=>$user
@@ -596,7 +596,7 @@ public function sameUserTheories(User $user){
      $a->views = $views;
      $a->save();
      // select genre dropdown
-     $genres = Genre::all();
+     $genres = Genre::with(['genreOf','hasArticles','hasStories'])->get();
      $selectGenre=[];
       foreach($genres as $g){
          $selectGenre[$g->id] = $g->name;
